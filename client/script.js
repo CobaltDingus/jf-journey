@@ -7,85 +7,100 @@ gsap.from('.burger-menu', {
     x: -50
 });
 
-let headTl = gsap.timeline({
-    scrollTrigger: ".head-img",
-    // start: "top",
-    // end: "100%",
-    scrub: "true",
-    pin: true,
-    markers: true
+// document.addEventListener("scroll", (event) => {
+//     console.log('e');
+// });
+
+ScrollTrigger.create({
+    trigger: '.head-img',
+    onUpdate: console.log('e'),
 })
 
-// headTl.fromTo(
-//     ".head-img",
-//     {
-//         scale: 1
-//     },
-//     {
-//         scale: 2,
-//         duration: 1
-//     } 
-// )
+let headTl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".wrapper",
+        start: "top",
+        end: "100%",
+        // endTrigger: ".transition",
+        scrub: "true",
+        pin: true,
+        markers: true
+      }
+})
 
-// function PageTransition() {
-//     let tl = gsap.timeline()
+// function expand() {
+    headTl.fromTo(
+        ".head-img",
+        {
+            scale: 1
+        },
+        {
+            scale: 1,
+            // opacity: 0,
+            // duration: 1
+        } 
+    )
+// 
 
-//     tl.to(".transition", {
-//         duration: 1,
-//         scaleY: 1,
-//         transformOrigin: "bottom",
-//         ease: "power4.inOut",
-//     })
+function PageTransition() {
+    let tl = gsap.timeline()
 
-//     tl.to(".transition", {
-//         duration: 1,
-//         scaleY: 0,
-//         transformOrigin: "top",
-//         ease: "power4.inOut",
-//         delay: 0.2,
-//     })
-// }
+    tl.to(".transition", {
+        duration: 1,
+        scaleY: 1,
+        transformOrigin: "bottom",
+        ease: "power4.inOut",
+    })
 
-// function contentAnimation() {
-//     let tl = gsap.timeline()
+    tl.to(".transition", {
+        duration: 1,
+        scaleY: 0,
+        transformOrigin: "top",
+        ease: "power4.inOut",
+        delay: 0.2,
+    })
+}
 
-//     tl.to("", {
-//         top: 0,
-//         duration: 1,
-//         ease: "power3.inOut",
-//         delay: 0.75,
-//     })
-// }
+function contentAnimation() {
+    let tl = gsap.timeline()
 
-// function delay(n) {
-//     n = n || 0;
-//     return new Promise((done) => {
-//         setTimeout(() => {
-//             done()
-//         }, n)
-//     })
-// }
+    tl.to("", {
+        top: 0,
+        duration: 1,
+        ease: "power3.inOut",
+        delay: 0.75,
+    })
+}
 
-// barba.init({
-//     sync: true,
-//     transitions: [
-//         {
-//             async leave(data) {
-//                 const done = this.async()
+function delay(n) {
+    n = n || 0;
+    return new Promise((done) => {
+        setTimeout(() => {
+            done()
+        }, n)
+    })
+}
 
-//                 PageTransition()
-//                 await delay(1000)
-//                 done()
-//             },
+barba.init({
+    sync: true,
+    transitions: [
+        {
+            async leave(data) {
+                const done = this.async()
 
-//             async enter(data) {
-//                 contentAnimation()
-//             },
+                PageTransition()
+                await delay(1000)
+                done()
+            },
 
-//             async once(data) {
-//                 contentAnimation()
-//             }
-//         }
-//     ]
-// })
+            async enter(data) {
+                contentAnimation()
+            },
+
+            async once(data) {
+                contentAnimation()
+            }
+        }
+    ]
+})
 
