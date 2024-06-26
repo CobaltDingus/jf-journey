@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.head-image-div {
+    position: absolute;
+}
+
+.head-img {
+    display: inline-block;
+    height: 200px;
+}
+
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.burger-line {
+    height: 3px;
+    width: 20px;
+    background-color: black;
+}
