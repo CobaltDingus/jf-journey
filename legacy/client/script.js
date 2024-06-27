@@ -21,55 +21,92 @@ let headTl = gsap.timeline({
         trigger: ".wrapper",
         start: "top",
         end: "100%",
-        // endTrigger: ".transition",
         scrub: "true",
         pin: true,
-        markers: true
-      }
+        markers: true,
+        snap: true
+    }
 })
 
 // function expand() {
     headTl.fromTo(
         ".head-img",
         {
+            scale: 1,
+            // visibility: 'visible'
+        },
+        {
+            scale: 5,
+            // opacity: 0,
+            duration: 12,
+            autoAlpha: 0
+            // visibility: 'hidden'
+        } 
+    )
+    
+    headTl.fromTo(
+        "h1",
+        {
             scale: 1
         },
         {
-            scale: 1,
-            // opacity: 0,
-            // duration: 1
+            scale: 12,
+            opacity: 0,
+            duration: 12,
         } 
     )
-// 
+
+    headTl.fromTo(
+        ".main-nav",
+        {
+            opacity: 1
+        },
+        {
+            opacity: 1
+        } 
+    )
+
+// let projectsTl = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: ".transition-test",
+//         start: "bottom",
+//         end: "100%",
+//         scrub: "true",
+//         pin: true,
+//         markers: true
+//     }
+// })
 
 function PageTransition() {
     let tl = gsap.timeline()
 
     tl.to(".transition", {
         duration: 1,
-        scaleY: 1,
-        transformOrigin: "bottom",
-        ease: "power4.inOut",
+        opacity: 1,
+        // scaleY: 1,
+        // transformOrigin: "bottom",
+        // ease: "power4.inOut",
     })
 
     tl.to(".transition", {
         duration: 1,
-        scaleY: 0,
-        transformOrigin: "top",
-        ease: "power4.inOut",
-        delay: 0.2,
+        opacity: 0,
+        // scaleY: 0,
+        // transformOrigin: "top",
+        // ease: "power4.inOut",
+        delay: 2,
     })
 }
 
 function contentAnimation() {
-    let tl = gsap.timeline()
+    // let tl = gsap.timeline()
 
-    tl.to("", {
-        top: 0,
-        duration: 1,
-        ease: "power3.inOut",
-        delay: 0.75,
-    })
+    // tl.to("", {
+    //     top: 0,
+    //     duration: 1,
+    //     ease: "power3.inOut",
+    //     delay: 0.75,
+    // })
 }
 
 function delay(n) {
@@ -89,7 +126,7 @@ barba.init({
                 const done = this.async()
 
                 PageTransition()
-                await delay(1000)
+                await delay(2000)
                 done()
             },
 

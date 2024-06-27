@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: sans-serif;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    background-color: whitesmoke;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 25%;
+    background-color: #0047ab;
+    text-align: center;
+    padding: 10px;
+}
+
+.content-wrapper {
+    margin-top: 60px;
+}
+
+.burger-line {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    border-radius: 20%;
+}
+
+section {
+    height: 100vh;
+}
+
+.egypt {
+    height: 100%;
+    background-image: url(images/egypt.jpg);
+    background-size: cover;
+    backdrop-filter: blur(8px) brightness(0.5);
+
+}

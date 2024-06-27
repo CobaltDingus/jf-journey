@@ -1,5 +1,5 @@
-import { gsap } from "./node_modules/gsap";
-import barba from './node_modules/@barba/core';
+import { gsap } from "gsap";
+import barba from '@barba/core';
 
 barba.init({
     transitions: [{
