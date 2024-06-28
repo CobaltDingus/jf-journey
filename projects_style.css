@@ -1,8 +1,20 @@
+:root {
+    --cobalt: #0047ab
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    scroll-snap-type: y proximity;
+}
+
+.logo {
+    zoom: 0.2;
+  }
 
 a {
     text-decoration: none;
@@ -14,7 +26,7 @@ a {
     display: flex;
     justify-content: space-between;
     padding: 0px 20px;
-    background-color: whitesmoke;
+    background-color: black;
     position: fixed;
     top: 0;
     width: 100%;
@@ -22,14 +34,18 @@ a {
     z-index: 1;
 }
 
-.logo {
+.main-nav > * {
+    padding-top: 10px;
+}
+
+/* .logo {
     height: 40px;
     width: 40px;
     border-radius: 25%;
     background-color: #0047ab;
     text-align: center;
     padding: 10px;
-}
+} */
 
 .content-wrapper {
     margin-top: 60px;
@@ -38,25 +54,42 @@ a {
 .burger-line {
     width: 35px;
     height: 5px;
-    background-color: black;
+    background-color: var(--cobalt);
     margin: 6px 0;
     border-radius: 20%;
 }
 
 section {
     height: 100vh;
+    scroll-snap-align: start;
 }
 
 .egypt {
     height: 100%;
     background-image: url(images/egypt.jpg);
     background-size: cover;
-    backdrop-filter: blur(8px) brightness(0.5);
+
+
+}
+
+.roman {
+    height: 100%;
+    background-size: cover;
+
+    background-image: url(https://images.unsplash.com/photo-1462747772350-460bb4aad7f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+}
+
+.british {
+    height: 100%;
+    background-image: url(https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/commercial/2011/8/23/1314095204550/The-Midland-Grand-Hotel-L-007.jpg?width=465&dpr=1&s=none);
+    background-size: cover;
 
 }
 
 .overview {
     height: 100vh;
+    color: whitesmoke;
+    background-image: url(https://images.unsplash.com/photo-1541728472741-03e45a58cf88?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
 .overview-image img {

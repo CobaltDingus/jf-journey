@@ -4,29 +4,36 @@ let headScene = new ScrollMagic.Scene({
                     triggerElement: ".filler",
                     triggerHook: 0.9
                 })
-                .setTween([".head-img", ".main-nav"], 1, {scale: 10, autoAlpha: 0}) // trigger a TweenMax.to tween
-                .addIndicators({name: "trigger div"}) // add indicators (requires plugin)
-                .addTo(headController);
+                .setTween([".head-image", ".main-nav", ".head-message"], 1, {scale: 10, display: 'none'}) // trigger a TweenMax.to tween
+                // .addIndicators({name: "trigger div"})
+                .addTo(headController)
 
 let projectsController = new ScrollMagic.Controller()
 
+let whiteScene = new ScrollMagic.Scene({
+                    triggerElement: ".trigger",
+                    triggerHook: 0
+                })
+                .setTween(".home-div", 1, {
+                    // backgroundColor: 'gray',
+                    // backgroundImage: 'url("https://i.natgeofe.com/n/e484088d-3334-4ab6-9b75-623f7b8505c9/1086.jpg")',
+                    backgroundImage: "radial-gradient(white 15%, black 80%)"
+                })
+                .addTo(projectsController)
+
 let projectElements = document.getElementsByClassName("project-link");
-for (let i = 0; i < projectElements.length; i++) { // create a scene for each element
+for (let i = 0; i < projectElements.length; i++) {
     new ScrollMagic.Scene({
-                        triggerElement: ".filler",
-                        triggerHook: 0
+                        triggerElement: ".trigger",
+                        triggerHook: 0,
+                        reverse: true
                     })
-                    .setTween(projectElements[i], {autoAlpha: 1, delay: 0.5 * i}) // add class toggle
-                    .addIndicators({name: "projects-div" }) // add indicators (requires plugin)
+                    .setTween(projectElements[i], 1, {visibility: 'visible', delay: 1 + (0.5 * i)}) // add class toggle
+                    // .addIndicators({name: "projects-div" })
                     .addTo(projectsController);
 }
 
-let whiteScene = new ScrollMagic.Scene({
-    triggerElement: ".filler",
-    triggerHook: 0
-})
-.setTween(".home-div", 1, {backgroundColor: 'white'})
-.addTo(projectsController)
+
 
 let mainController = new ScrollMagic.Controller()
 
@@ -37,55 +44,68 @@ let mainScene = new ScrollMagic.Scene({
                 .setPin(".home-div")
                 .addTo(mainController);
 
-// window.onbeforeunload = function () {
-//     window.scrollTo(0, 0);
-// }
+function PageTransition() {
+    let tl = gsap.timeline()
 
-// // gsap.registerPlugin(ScrollTrigger)
+    tl.to(".transition", {
+        duration: 1,
+        opacity: 1,
+        // scaleY: 1,
+        // transformOrigin: "bottom",
+        // ease: "power4.inOut",
+    })
 
-// let headTl = gsap.timeline({
-//     scrollTrigger: {
-//         trigger: '.home-div',
-//         toggleActions: 'play pause resume reverse',
-//         start: 'top',
-//         end: '100%',
-//         pin: true,
-//         markers: true,
-//         scrub: true,
-//     }
-// })
+    tl.to(".transition", {
+        duration: 1,
+        opacity: 0,
+        // scaleY: 0,
+        // transformOrigin: "top",
+        // ease: "power4.inOut",
+        delay: 2,
+    })
+}
 
-// headTl.fromTo(
-//     ['.head-img'],
-//     {
-//         scale: 1
-//     },
-//     {
-//         scale: 15,
-//         autoAlpha: 0
-//     } 
-// )
+function contentAnimation() {
+    // let tl = gsap.timeline()
 
-// let projectBubbles = gsap.utils.toArray('.project-link')
+    // tl.to("", {
+    //     top: 0,
+    //     duration: 1,
+    //     ease: "power3.inOut",
+    //     delay: 0.75,
+    // })
+}
 
-// let projectsTl = gsap.timeline({
-//     scrollTrigger: {
-//         trigger: '.projects-div',
-//         toggleActions: 'play pause resume reverse',
-//         start: 'top',
-//         // pin: true,
-//         markers: true,
-//         // scrub: true,
-//         snap: true
-//     }
-// })
+function delay(n) {
+    n = n || 0;
+    return new Promise((done) => {
+        setTimeout(() => {
+            done()
+        }, n)
+    })
+}
 
-// for (let bubble of projectBubbles) {
-//     projectsTl.from(
-//         bubble,
-//         {
-//             opacity: 0,
-//             duration: 0.5
-//         }
-//     )
-// }
+barba.init({
+    sync: true,
+    transitions: [
+        {
+            async leave(data) {
+                const done = this.async()
+
+                PageTransition()
+                await delay(2000)
+                done()
+            },
+
+            async enter(data) {
+                contentAnimation()
+            },
+
+            async once(data) {
+                contentAnimation()
+            }
+        }
+    ]
+})
+                
+                

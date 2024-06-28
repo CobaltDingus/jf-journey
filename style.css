@@ -1,3 +1,7 @@
+:root {
+    --cobalt: #0047ab
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,29 +11,49 @@
 
 body {
     background-color: black;
+    
+}
+
+.logo {
+    zoom: 0.4;
+  }
+
+.head-message {
+    color: whitesmoke;
+    position: absolute;
+    max-width: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .main-nav {
     display: flex;
     justify-content: space-between;
-    padding: 0px 20px;
+    padding: 20px 40px;
+    top: 0;
+    width: 100%;
 }
 
 .burger-menu {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .burger-line {
-    height: 3px;
-    width: 20px;
-    background-color: white;
+    height: 5px;
+    width: 50px;
+    background-color: var(--cobalt);
+    border-radius: 20%;
 }
 
 .home-div {
     height: 100vh;
-    /* overflow: visible; */
+    text-align: center;
 }
 
 .head-image {
@@ -37,8 +61,9 @@ body {
     max-width: 50%;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     z-index: 1;
     overflow: visible;
 }
@@ -50,10 +75,15 @@ body {
 }
 
 .projects-div {
-    /* height: 100vh; */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* position: relative; */
+    max-width: 80%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .project-link {
@@ -70,7 +100,13 @@ body {
     border-radius: 100%;
     /* filter: blur(4px); */
     border: 1px solid whitesmoke;
+
 }
+
+/* .project-link *,
+.project-link > * {
+    display: none
+} */
 
 .project-image {
     border-radius: 100%;
@@ -83,6 +119,20 @@ img:hover {
     filter: blur(0px);
 }
 
-.filler {
+.filler, .trigger {
     height: 100vh;
+}
+
+.transition {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: black;
+    opacity: 0;
+    /* -webkit-transform: scaleY(0);
+    transform: scaleY(0); */
 }
