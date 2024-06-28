@@ -21,16 +21,46 @@
         <!-- </div> -->
     </nav>
     <main class="content-wrapper">
+        <section class="overview">
+            <h1>Technologies used:</h1>
+            <ul>
+                <li>Node.js & NPM</li>
+                <li>HTML, CSS,  JavaScript</li>
+            </ul>
+            <p>Our first project was to build a functioning game of Tic-Tac-Toe in the browser. All we had at this point was basic HTML, CSS, and JavaScript. </p>
+            <div class="overview-image">
+                <img src="/images/tictactoe.png" alt="">
+            </div>
+            
+
+        </section>
         <section class="foreword">
             <div class="egypt">
-                <h1>fbdskfskd</h1>
+                <h1>Basic Structure</h1>
+                <p>
+                For the game itself, the steps were relatively straightforward. Tic-Tac-Toe is played on a 3x3 grid so I created 9 divs and arranged them into a grid with CSS, using the aptly named ‘display: grid’ style. After some border styling to get the grid lines, I had my board ready to go.
+
+                After this, I used ‘display: grid’ again to setup the two player score columns by the side. The three buttons were created using button tags and the game messages and trivia text were both done with simple headers/text tags. 
+                </p>
             </div>
         </section>
         <section class="coding">
-            <div class="roman">f</div>
+            <div class="roman">
+                <h1>JavaScript & DOM Manipulation</h1>
+                <p>
+                To make the game actually work, I had to use JavaScript to store variables and change elements to reflect the game state. For starters, I assigned an event listener to each tile to do something if the tile was clicked. This would change the tile to an ‘X’ or ‘O’ with CSS depending on which player’s turn it was, which itself was checked using a variable (isPlayerOne) that alternated between true and false. After a certain number of moves, I then had a series of functions to check the state of every possible winning row, column, or diagonal. If any of them contained three of the same tiles in a row, the round would end and increment the score on the sidebar of the player who won.
+
+The buttons also had similar event listeners. The ‘Trivia’ button would change the text of the trivia message with the next line of trivia from an array of trivia strings. The ‘New Round’ button would reset the tiles back to normal for a fresh round and the ‘Reset’ button would set everything back to its original state.
+                </p>
+            </div>
         </section>
         <section class="explanation">
-            <div class="briish">sf</div>
+            <div class="british">
+                <h1>Design ideas</h1>
+                <p>
+                Given that we were all doing Tic-Tac-Toe, I had to try and put a unique spin on my website. For my spin, I decided to try doing a ‘history’ theme to explore the long history of the game itself. Initially, I wanted to have different backgrounds, each representing a period of time over the centuries of Tic-Tac-Toe’s existence. However, I quickly ran into a problem with this approach: the design of my board would conflict with the background, being too bright or too dark and just being hard to see in general. With most of my time spent on making the game work in the first place, I switched gears and tried to do an ‘arts and crafts’ theme. I picked a font that looked handwritten, a background colour that looked like brown paper, and simple monochromatic colors for the buttons. Luckily, I still kept some of my original ideas in the Trivia section which just spews out historical trivia about Tic-Tac-Toe. 
+                </p>
+            </div>
         </section>
     </main>
     <script src="projects_script.js"></script>

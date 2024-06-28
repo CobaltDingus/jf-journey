@@ -54,3 +54,11 @@ section {
     backdrop-filter: blur(8px) brightness(0.5);
 
 }
+
+.overview {
+    height: 100vh;
+}
+
+.overview-image img {
+    width: 50%;
+}
