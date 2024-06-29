@@ -1,3 +1,6 @@
+initEverything()
+
+function initEverything() {
 let headController = new ScrollMagic.Controller()
 
 let headScene = new ScrollMagic.Scene({
@@ -23,17 +26,19 @@ let whiteScene = new ScrollMagic.Scene({
 
 let projectElements = document.getElementsByClassName("project-link");
 for (let i = 0; i < projectElements.length; i++) {
+    let target = projectElements[i]
+    let projectTl = new TimelineMax()
+
+    projectTl.from(target, 0.25, {visibility: 'hidden'})
+    projectTl.to(target, 0.25, {visibility: 'visible', delay: 1 + (0.5 * i)})
     new ScrollMagic.Scene({
                         triggerElement: ".trigger",
                         triggerHook: 0,
-                        reverse: true
                     })
-                    .setTween(projectElements[i], 1, {visibility: 'visible', delay: 1 + (0.5 * i)}) // add class toggle
+                    .setTween(projectTl) // add class toggle
                     // .addIndicators({name: "projects-div" })
                     .addTo(projectsController);
 }
-
-
 
 let mainController = new ScrollMagic.Controller()
 
@@ -44,68 +49,33 @@ let mainScene = new ScrollMagic.Scene({
                 .setPin(".home-div")
                 .addTo(mainController);
 
-function PageTransition() {
-    let tl = gsap.timeline()
 
-    tl.to(".transition", {
-        duration: 1,
-        opacity: 1,
-        // scaleY: 1,
-        // transformOrigin: "bottom",
-        // ease: "power4.inOut",
-    })
+// ============================= PROJECT PAGE =============================
+let projectPageController = new ScrollMagic.Controller({
+    globalSceneOptions: {
+        triggerHook: 'onLeave',
+        duration: 0,
+    }
+});
 
-    tl.to(".transition", {
-        duration: 1,
-        opacity: 0,
-        // scaleY: 0,
-        // transformOrigin: "top",
-        // ease: "power4.inOut",
-        delay: 2,
-    })
+let slides = document.querySelectorAll("section");
+
+for (let i=0; i<slides.length; i++) {
+    new ScrollMagic.Scene({
+            triggerElement: slides[i],
+            offset: -60
+        })
+        .setPin(slides[i], {pushFollowers: false})
+        .addIndicators()
+        .addTo(projectPageController);
 }
 
-// function contentAnimation() {
-//     // let tl = gsap.timeline()
+} // init EVERYTHING
 
-//     // tl.to("", {
-//     //     top: 0,
-//     //     duration: 1,
-//     //     ease: "power3.inOut",
-//     //     delay: 0.75,
-//     // })
+// function destroyAll() {
+//     headController.destroy()
+//     projectsController.destroy()
+//     mainController.destroy()
 // }
 
-function delay(n) {
-    n = n || 0;
-    return new Promise((done) => {
-        setTimeout(() => {
-            done()
-        }, n)
-    })
-}
-
-barba.init({
-    sync: true,
-    transitions: [
-        {
-            async leave(data) {
-                const done = this.async()
-
-                PageTransition()
-                await delay(2000)
-                done()
-            },
-
-            async enter(data) {
-                contentAnimation()
-            },
-
-            async once(data) {
-                contentAnimation()
-            }
-        }
-    ]
-})
-                
-                
+ 

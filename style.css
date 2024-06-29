@@ -97,9 +97,9 @@ body {
     /* display: block; */
     margin: 0 auto;
     width: 100%;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     /* filter: blur(4px); */
-    border: 1px solid whitesmoke;
+    /* border: 1px solid whitesmoke; */
 
 }
 
@@ -111,7 +111,7 @@ body {
 .project-image {
     border-radius: 100%;
     height: 200px;
-    box-shadow: 1px 1px whitesmoke;
+    box-shadow:0 0 20px blue;
 }
 
 img:hover {
@@ -121,18 +121,4 @@ img:hover {
 
 .filler, .trigger {
     height: 100vh;
-}
-
-.transition {
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background: black;
-    opacity: 0;
-    /* -webkit-transform: scaleY(0);
-    transform: scaleY(0); */
 }
