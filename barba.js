@@ -1,6 +1,6 @@
-barba.hooks.enter((data) => {
-    console.log('e');
-  });
+// barba.hooks.enter((data) => {
+//     console.log('e');
+//   });
 
 barba.hooks.after(() => {
     const bottomDOM = document.getElementsByTagName("body")[0]

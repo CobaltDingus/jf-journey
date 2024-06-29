@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="barba.css"> -->
     <link rel="stylesheet" href="everything.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
 
 
 </head>
@@ -20,7 +22,7 @@
         <div class="transition"></div>
         <nav class="project-nav">
             <a href="index.html">
-                <div class="logo-project">
+                <div class="logo-main">
                 <div class="gas co">
                     <span class="number">27</span>
                     <h2 class="symbol">Jf</h2>
@@ -28,7 +30,7 @@
                 </div>
                 </div>
             </a>
-                <div class="burger-menu-project">
+                <div burger-menu>
                     <div class="burger-line"></div>
                     <div class="burger-line"></div>
                     <div class="burger-line"></div>
@@ -37,23 +39,20 @@
     <!-- <main class="content-wrapper"> -->
         
         <section class="project-header">
-            <h1 class="project-title">PROJECT 2: GameShare</h1>
-            <h2 class="project-goal">
+            <h1 class="project-title">PROJECT 2: <span style="color: green;">GameShare</span></h1>
+            <h3 class="project-goal">
                 Objective: 
                 Build a full-stack CRUD app.
-            </h2>
-            <h2 class="project-tools">
-            Tools: 
-            <img class="icon" src="images/icons/express.svg" alt="Express"> <span>Express</span>
-            <img class="icon" src="images/icons/ejs.svg" alt=""> <span>EJS</span>
-             <span class="new">bcrypt</span>, <span class="new">PostgreSQL</span> 
-            </h2>
+            </h3>
+            <h3 class="project-tools">
+            Tools: PostgreSQL, Express, EJS, bcrypt
+            </h3>
             <div class="overview-image">
-                <img src="/images/gameshare.png" alt="">
+                <img src="images/gameshare.png" alt="">
             </div>
             <img class="header-bg" src="images/brain2.jpeg" alt="">
         </section>
-        <div id="parallax1" class="parallaxParent darken">
+        <div id="parallax1" class="parallaxParent darken ralof">
             <div style="background-image: url(https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/04/youre-finally-awaken-meme-with-caption.jpg);"></div>
         </div>
         <section class="parallax-section">
@@ -62,34 +61,46 @@
            
                 </div>
                 <h1>Laying the Foundations</h1>
-                <p>
+                <p>For this project, I decided to make something related to games. After some thinking, GameShare was brought into existence: a website where people could share what games they played and find other people who share their interests. Kinda like a gaming rip-off of Tinder.</p>
+                <p>With my idea set in stone, I now had to make a database for all the information I needed to store. PostgreSQL was the tool that we were given for this purpose. It’s a relational database management system. In short, it means we just stuff all our data into tables with columns of attributes and rows and rows of data all following the same structure.</p>
+                <p>For my app, I decided that I needed 3 tables:</p>
+                <ul>
+                    <li><strong>users:</strong> for user information,</li>
+                    <li><strong>games:</strong> for game information,</li>
+                    <li>and <strong>usergamelist:</strong> for each user's list of games</li>
+                </ul>
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-sql">
+                    CREATE TABLE users (
+                        id SERIAL PRIMARY KEY,
+                        username TEXT NOT NULL,
+                        email TEXT NOT NULL,
+                        password_hashed TEXT NOT NULL,
+                        profile_image TEXT,
+                        about_me TEXT
+                    );
                     
-                    PostgreSQL is a relational database management system. In short, it means we just stuff all our data into a table with columns of attributes and rows and rows of data all following the same structure. The first thing here was to keep track of user login credentials. 
+                    CREATE TABLE games (
+                        id SERIAL PRIMARY KEY,
+                        title TEXT NOT NULL,
+                        description TEXT,
+                        image_url TEXT,
+                        player_count INTEGER
+                    );
                     
-                    
-                    The words in white are the column names and the words in blue specify what has to go into each column
-                    
-                    Now you’re probably thinking “how do you get users when you don’t even have a site yet?”
-                    
-                    Well it’s simple: we made them up. Using JavaScript, we could connect to our database and use SQL statements to seed some dummy data. 
-                    
-                    There’s a truckload of things going on here but it’s fairly simple. The handy thing about SQL is that it more or less describes exactly what you’re doing: INSERT data INTO the users table, filling the specified columns (username, email, password_hashed) with the VALUES that you want to put in. 
-                    
-                    Before actually putting the data in however, we also used bycrypt - a library that uses an algorithm to convert normal passwords into unintelligible garbage (a ‘hashed password’) to make them harder to hack - because, as it turns out, websites don’t store your password as it is. Each time the user logs in thereafter, we simply pass in whatever they type through the hashing process again and let them in if the hash is the same. 
-                    
-                    With all our necessary user data ready to go, we finally use the .query function of our database to connect to it and pass it our SQL statement to add the user into our database.
-                    
-                </p>
-                <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
-                    function helloWorld() {
-                        console.log('Hello, world!');
-                    }
-                    helloWorld();
+                    CREATE TABLE usergamelist (
+                        id SERIAL PRIMARY KEY,
+                        user_id INTEGER,
+                        game_id INTEGER,
+                        remark TEXT,
+                        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+                        FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE
+                    );
                     </code></pre>
+                <span class="subtitle">FOREIGN KEY indicates that the key is derived from a key in another table. If said key is deleted, then anything referencing it will get deleted too.</span>
             </div>
         </section>
         <div id="parallax2" class="parallaxParent">
-            <div style="background-image: url(https://shorturl.at/Hws05);"></div>
+            <div style="background-image: url(images/project2/users3.png);"></div>
         </div>
         <section class="parallax-section">
             <div class="parallax-content">

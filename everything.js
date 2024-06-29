@@ -1,6 +1,21 @@
 initEverything()
 
 function initEverything() {
+
+let burgerMenu = document.querySelector('.burger-menu')
+burgerMenu.addEventListener('click', toggleDropdown)
+
+let dropdownMenu = document.querySelector('.dropdown')
+console.log(dropdownMenu);
+
+function toggleDropdown() {
+    if (dropdownMenu.classList.contains('visible')) {
+        dropdownMenu.classList = "dropdown"
+    } else {
+        dropdownMenu.classList = "dropdown visible"
+    }
+}
+
 let headController = new ScrollMagic.Controller()
 
 let headScene = new ScrollMagic.Scene({
@@ -60,7 +75,7 @@ let projectPageController = new ScrollMagic.Controller({
 
 let slides = document.querySelectorAll(".wipe,.overview");
 
-for (let i=0; i<slides.length; i++) {
+for (let i = 0; i < slides.length; i++) {
     new ScrollMagic.Scene({
             triggerElement: slides[i],
             offset: -60
@@ -70,22 +85,32 @@ for (let i=0; i<slides.length; i++) {
         .addTo(projectPageController);
 }
 
-var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+let parallaxController = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
 
 	// build scenes
-	new ScrollMagic.Scene({triggerElement: "#parallax1"})
-					.setTween("#parallax1 > div", {y: "80%", ease: Linear.easeNone})
-					// .addIndicators()
-					.addTo(controller);
+let parallaxSections = document.querySelectorAll(".parallaxParent")
+let parallaxSectionsDiv = document.querySelectorAll(".parallaxParent > div")
 
-	new ScrollMagic.Scene({triggerElement: "#parallax2"})
-					.setTween("#parallax2 > div", {y: "80%", ease: Linear.easeNone})
-					// .addIndicators()
-					.addTo(controller);
+for (let i = 0; i < parallaxSections.length; i++ ) {
+    new ScrollMagic.Scene({
+            triggerElement: parallaxSections[i]
+        })
+        .setTween(parallaxSectionsDiv[i], {y: "80%", ease: Linear.easeNone})
+        .addTo(parallaxController);
+}
+	// new ScrollMagic.Scene({triggerElement: "#parallax1"})
+	// 				.setTween("#parallax1 > div", {y: "80%", ease: Linear.easeNone})
+	// 				// .addIndicators()
+	// 				.addTo(parallaxController);
 
-	new ScrollMagic.Scene({triggerElement: "#parallax3"})
-					.setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
-					// .addIndicators()
-                    .addTo(controller);
+	// new ScrollMagic.Scene({triggerElement: "#parallax2"})
+	// 				.setTween("#parallax2 > div", {y: "80%", ease: Linear.easeNone})
+	// 				// .addIndicators()
+	// 				.addTo(parallaxController);
+
+	// new ScrollMagic.Scene({triggerElement: "#parallax3"})
+	// 				.setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
+	// 				// .addIndicators()
+    //                 .addTo(parallaxController);
                     
 } // init EVERYTHING
