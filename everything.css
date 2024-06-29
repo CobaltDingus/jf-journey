@@ -1,6 +1,7 @@
 /* main page */
 :root {
-    --cobalt: #0047ab
+    --cobalt: #0047ab;
+    --code: #282c34;
 }
 
 * {
@@ -8,11 +9,6 @@
     padding: 0;
     box-sizing: border-box;
     /* border: 1px red solid; */
-}
-
-body {
-    background-color: black;
-    
 }
 
 .logo-main {
@@ -55,6 +51,7 @@ body {
 .home-div {
     height: 100vh;
     text-align: center;
+    background-color: black;
 }
 
 .head-image {
@@ -135,8 +132,8 @@ a {
 .project-nav {
     display: flex;
     justify-content: space-between;
-    padding: 0px 20px;
-    background-color: black;
+    padding: 40px 40px;
+    /* background-color: black; */
     position: fixed;
     top: 0;
     width: 100%;
@@ -160,10 +157,10 @@ a {
     border-radius: 20%;
 }
 
-section {
+/* section {
     height: 100vh;
     scroll-snap-align: start;
-}
+} */
 
 .egypt {
     height: 100%;
@@ -195,6 +192,80 @@ section {
     width: 50%;
 }
 
+/* =========================================== PARALLAX =========================================== */
+.parallaxParent {
+    height: 50vh;
+    overflow: hidden;
+}
+.parallaxParent > * {
+    height: 200%;
+    position: relative;
+    top: -100%;
+    background-size: cover;
+}
+
+.project-header, .parallax-section {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+
+pre {
+    text-align: left;
+    text-shadow: none;
+}
+
+.project-header {
+    min-height: 100vh;
+    color: whitesmoke;
+    text-shadow: 0 0 20px black,
+             0 0 30px black,
+             0 0 40px black;
+}
+
+.project-header > * {
+    margin: 60px;
+}
+
+.overview-image > img {
+    border: 5px orange ridge;
+}
+
+.parallax-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(208, 208, 208);
+    border: 10px solid bisque;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.parallax-content {
+    margin: 0 auto;
+    width: 80%
+}
+
+.icon {
+    max-height: 20px;
+    margin: 0;
+}
+
+.header-bg {
+    margin: 0;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: fill;
+    filter: blur(8px);
+}
+
+.darken {
+    filter: brightness(20%);
+}
 
 /* barba */
 .transition {

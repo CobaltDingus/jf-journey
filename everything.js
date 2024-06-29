@@ -5,7 +5,7 @@ let headController = new ScrollMagic.Controller()
 
 let headScene = new ScrollMagic.Scene({
                     triggerElement: ".filler",
-                    triggerHook: 0.9
+                    triggerHook: 0.9,
                 })
                 .setTween([".head-image", ".main-nav", ".head-message"], 1, {scale: 10, display: 'none'}) // trigger a TweenMax.to tween
                 // .addIndicators({name: "trigger div"})
@@ -58,7 +58,7 @@ let projectPageController = new ScrollMagic.Controller({
     }
 });
 
-let slides = document.querySelectorAll("section");
+let slides = document.querySelectorAll(".wipe,.overview");
 
 for (let i=0; i<slides.length; i++) {
     new ScrollMagic.Scene({
@@ -66,16 +66,26 @@ for (let i=0; i<slides.length; i++) {
             offset: -60
         })
         .setPin(slides[i], {pushFollowers: false})
-        .addIndicators()
+        // .addIndicators()
         .addTo(projectPageController);
 }
 
+var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+
+	// build scenes
+	new ScrollMagic.Scene({triggerElement: "#parallax1"})
+					.setTween("#parallax1 > div", {y: "80%", ease: Linear.easeNone})
+					// .addIndicators()
+					.addTo(controller);
+
+	new ScrollMagic.Scene({triggerElement: "#parallax2"})
+					.setTween("#parallax2 > div", {y: "80%", ease: Linear.easeNone})
+					// .addIndicators()
+					.addTo(controller);
+
+	new ScrollMagic.Scene({triggerElement: "#parallax3"})
+					.setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
+					// .addIndicators()
+                    .addTo(controller);
+                    
 } // init EVERYTHING
-
-// function destroyAll() {
-//     headController.destroy()
-//     projectsController.destroy()
-//     mainController.destroy()
-// }
-
- 
