@@ -1,140 +1,532 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow:visible">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <title>Tic Tac Toe</title>
-    <!-- <link rel="stylesheet" href="projects_style.css">
-    <link rel="stylesheet" href="gases.css">
-    <link rel="stylesheet" href="barba.css"> -->
-    <link rel="stylesheet" href="../everything.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
-
-
-</head>
-<body data-barba="wrapper">
+<html lang="en" style="overflow: visible">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="everything.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap"/>
+  </head>
+  <body data-barba="wrapper">
     <main data-barba="container" data-barba-namespace="home">
-        <div class="transition"></div>
-        <nav class="main-nav">
-            <a href="../index.html">
-                <div class="logo-project">
-                <div class="gas co">
-                    <span class="number">27</span>
-                    <h2 class="symbol">Jf</h2>
-                    <p class="name">58.933</p>
-                </div>
-                </div>
-            </a>
-                <div class="burger-menu-project">
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                </div>
-        </nav>    
-        <div class="wrapper"> 
+      <div class="transition"></div>
+      <nav class="project-nav">
+        <a href="index.html">
+          <div class="logo-main">
+            <div class="gas co">
+              <span class="number">27</span>
+              <h2 class="symbol">Jf</h2>
+              <p class="name">58.933</p>
+            </div>
+          </div>
+        </a>
+        <div class="burger-menu">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </div>
+        <ul class="dropdown">
+          <li class="dropdown-li"><a href="about.html">About</a></li>
+          <li class="dropdown-li"><a href="projectOne.html">Project 1</a></li>
+          <li class="dropdown-li"><a href="projectTwo.html">Project 2</a></li>
+          <li class="dropdown-li"><a href="projectThree.html">Project 3</a></li>
+          <li class="dropdown-li"><a href="projectFour.html">Project 4</a></li>
+        </ul>
+      </nav>
+      <div class="wrapper">
         <section class="project-header">
-            <h1 class="project-title">PROJECT 2: <span style="color: green;">GameShare</span></h1>
-            <h3 class="project-goal">
-                Objective: 
-                Build a full-stack CRUD app.
-            </h3>
-            <h3 class="project-tools">
-            Tools: PostgreSQL, Express, EJS, bcrypt
-            </h3>
-            <div class="overview-image">
-                <img src="../images/gameshare.png" alt="">
-            </div>
-            <img class="header-bg" src="../images/brain2.jpeg" alt="">
+          <h1 class="project-title">
+            PROJECT 1: Tic-Tac-Toe
+          </h1>
+          <h3 class="project-goal">Objective: Build a browser game</h3>
+          <h3 class="project-tools">Tools: HTML, CSS, JavaScript</h3>
+          <div class="overview-image">
+            <img src="images/tictactoe.png" alt="" />
+          </div>
+          <img class="header-bg" src="images/brain1.png" alt="" />
         </section>
-        <div id="parallax1" class="parallaxParent darken ralof">
-            <div style="background-image: url(https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/04/youre-finally-awaken-meme-with-caption.jpg);"></div>
+        <div class="parallaxParent darken ralof">
+          <div
+            style="
+              background-image: url(images/project1/tictactoe_egypt.png);
+            "
+          ></div>
         </div>
-        <section class="parallax-section">
-            <div class="parallax-content">
-                <div>
-           
-                </div>
-                <h1>Laying the Foundations</h1>
-                <p>For this project, I decided to make something related to games. After some thinking, GameShare was brought into existence: a website where people could share what games they played and find other people who share their interests. Kinda like a gaming rip-off of Tinder.</p>
-                <p>With my idea set in stone, I now had to make a database for all the information I needed to store. PostgreSQL was the tool that we were given for this purpose. It’s a relational database management system. In short, it means we just stuff all our data into tables with columns of attributes and rows and rows of data all following the same structure.</p>
-                <p>For my app, I decided that I needed 3 tables:</p>
-                <ul>
-                    <li><strong>users:</strong> for user information,</li>
-                    <li><strong>games:</strong> for game information,</li>
-                    <li>and <strong>usergamelist:</strong> for each user's list of games</li>
-                </ul>
-                <pre class="theme-atom-one-dark"><code class="hljs-code language-sql">
-                    CREATE TABLE users (
-                        id SERIAL PRIMARY KEY,
-                        username TEXT NOT NULL,
-                        email TEXT NOT NULL,
-                        password_hashed TEXT NOT NULL,
-                        profile_image TEXT,
-                        about_me TEXT
-                    );
-                    
-                    CREATE TABLE games (
-                        id SERIAL PRIMARY KEY,
-                        title TEXT NOT NULL,
-                        description TEXT,
-                        image_url TEXT,
-                        player_count INTEGER
-                    );
-                    
-                    CREATE TABLE usergamelist (
-                        id SERIAL PRIMARY KEY,
-                        user_id INTEGER,
-                        game_id INTEGER,
-                        remark TEXT,
-                        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-                        FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE
-                    );
-                    </code></pre>
-                <span class="subtitle">FOREIGN KEY indicates that the key is derived from a key in another table. If said key is deleted, then anything referencing it will get deleted too.</span>
-            </div>
-        </section>
-        <div id="parallax2" class="parallaxParent">
-            <div style="background-image: url(../images/project2/users3.png);"></div>
-        </div>
-        <section class="parallax-section">
-            <div class="parallax-content">
-                <h1>What the heck are you building?</h1>
+        <section class="parallax-section" style="border: 10px bisque; border-style: solid none;">
+          <div class="parallax-content">
+            <div></div>
+            <h1>Laying the Foundations</h1>
+            <p>
+                Our first project was to build a functioning game of Tic-Tac-Toe in the browser. 
+                All we had at this point was basic HTML, CSS, and JavaScript.
+                Although I had done some coding before SEB71, I still felt quite inexperienced, especially with JavaScript which,
+                funnily enough, was going to be the main focus.
+            </p>
+            <p>
+                I knew roughly at this point what each language did: HTML made up the actual page that was going to be displayed,
+                CSS was for styling all the HTML elements, and JavaScript could... do things? 
+            </p>
+            <p>Eh, good enough to start the project.</p>
+
+            <p>
+                Alright so maybe it wasn't that bad. I understood that JavaScript could be used to make and run functions which, yeah, basically just do things.
+                Still, it took me a while to decide how to begin. Eventually, I figured that if I wanted to play Tic-Tac-Toe, I had to go and draw the grid first so that was what I started with.
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                    &lt;link rel="icon" type="image/x-icon" href="images/tic-tac-toe.ico"&gt;
+                    &lt;title&gt;Tic-Tac-Toe&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="style.css"&gt;
+                    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+                    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+                    &lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;div class="bg-image"&gt;&lt;/div&gt;
+                    &lt;header&gt;Tic-Tac-Toe&lt;/header&gt;
+                    &lt;div class="game-wrapper"&gt;
+                        &lt;aside class="scoreboard"&gt;❌ Player 1 Score ❌ &lt;span class="score-counter"&gt;0&lt;/span&gt;&lt;/aside&gt;
+                        &lt;div class="board"&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                            &lt;div class="tileEmpty"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;aside class="scoreboard"&gt;⭕ Player 2 Score ⭕&lt;span class="score-counter"&gt;0&lt;/span&gt;&lt;/aside&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class="message-text"&gt;"Player 1, click a tile to begin!"&lt;/h3&gt;
+                    &lt;div class="buttons-div"&gt;
+                        &lt;button class="trivia-btn"&gt;Trivia&lt;/button&gt;
+                        &lt;button class="new-round-btn"&gt;New Round&lt;/button&gt;
+                        &lt;button class="reset-btn"&gt;Reset&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;p class="trivia-paragraph"&gt;Did you know: &lt;span class="trivia-content"&gt;
+                    You can press the trivia button to learn something new about Tic-Tac-Toe!
+                    &lt;/span&gt;&lt;/p&gt;
+                    &lt;script src="app.js"&gt;&lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </code></pre>
+                <span class="subtitle">And so it begins...</span>
                 <p>
+                    This may be the only time my HTML is short enough to explain in full: 
+                    <ul>
+                        <li>The <code>header</code> is for my Tic-Tac-Toe title,</li>
+                        <li>the whole grid and sideboards are wrapped together by a <code>div</code> with the class <code>game-wrapper</code>,</li>
+                        <li>my grid is just 9 <code>divs</code> inside a board <code>div</code>,</li>
+                        <li>the scoreboards are just two <code>asides</code> before and after the board,</li>
+                        <li>3 <code>buttons</code> for the, well, buttons</li>
+                        <li>and a <code>h3</code> for my game message and a <code>p</code> for my trivia paragraph</li>
+                    </ul>
+                </p>
+                <p>The only odd thing out is the <code>bg-image div</code> at the very top. That's definitely a leftover from an unused idea
+                that I'll go into later. Seems quite straightforward but mind you, this is just the HTML without the styling. Witness it in all it's natural glory below...
+                </p>
+          </div>
+        </section>
+        <div class="parallaxParent">
+          <div style="background-image: url(images/project1/tictactoe_html.png)"></div>
+        </div>
+        <section class="parallax-section" style="border: 10px bisque; border-style: solid none;">
+            <div class="parallax-content">
+              <div></div>
+              <p>
+                  Yep. If that's Tic-Tac-Toe, then I'm a gorgeous supermodel.
+              </p>
+              <p>
+                  Time for some CSS.
+              </p>
+              <pre class="theme-atom-one-dark"><code class="hljs-code language-css">
+                * {
+                    box-sizing: border-box;
+                    margin: 0px 0px;
+                }
+                
+                body {
+                    background-color: bisque;
+                    font-family: "Special Elite", system-ui;
+                    font-weight: 400;
+                    font-style: normal;
+                }
+                
+                .game-wrapper {
+                    max-width: 80%;
+                    margin: 0 auto;
+                    text-align: center;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+                
+                aside.scoreboard {
+                    margin: auto 0;
+                    font-size: 1.1rem;
+                }
+                
+                .score-counter {
+                    display: block;
+                    padding: 60px;
+                    font-size: 2rem;
+                }
+                
+                .message-text {
+                    margin: 20px auto;
+                    display: block;
+                    max-width: 50%;
+                    text-align: center;
+                    color: black;
+                }
+                
+                header {
+                    font-size: 3rem;
+                    padding: 20px;
+                    text-align: center;
+                }
+                
+                .board {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    margin: 0 auto;
+                    overflow: hidden;
+                }
+                
+                .board div {
+                    height: 100px;
+                    width: 100px;
+                    outline: 1px solid;
+                }
+                
+                .tileO {
+                    background-image: url(images/o.png);
+                    background-size: cover;
+                }
+                
+                .tileX {
+                    background-image: url(images/x.png);
+                    background-size: cover;    
+                }
+                
+                .buttons-div {
+                    max-width: 50%;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+                
+                button {
+                    font-family: "Special Elite", system-ui;
+                    padding: 10px;
+                    background-color: black;
+                }
+                
+                .trivia-btn {
+                    color: blue;
+                }
+                
+                .new-round-btn {
+                    color: green;
+                }
+                
+                .reset-btn {
+                    color: red;
+                }
+                
+                .trivia-paragraph {
+                    line-height: 1.5;
+                    margin: 20px auto;
+                    display: block;
+                    max-width: 50%;
+                }
+                  </code></pre>
+                  <span class="subtitle">Ah, where I began my love-hate relationship with CSS. Mostly hate.</span>
+                  <p>
+                   A lot of stuff is fairly self-explanatory so I'll stick to the interesting ones. Of note is all the grid styling I did:  
+                  </p>
+                  <pre class="theme-atom-one-dark"><code class="hljs-code language-css">
+                    .game-wrapper {
+                        max-width: 80%;
+                        margin: 0 auto;
+                        text-align: center;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                    }
                     
-                    Obviously, we weren’t just going to make a database that just stores users and nothing else. Being a gamer, I decided to make my website about games. Users would be able to show off a list of their favourite games to compare with other users and hopefully get in contact with people who share their interest. This meant I had to make two tables: one for all the different games and another to show the games for each user.
+                    .board {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        margin: 0 auto;
+                        overflow: hidden;
+                    }
                     
-                    Pretty much the same thing here except for the foreign keys. These are meant to represent the keys of another table, which helps to make sure the data is valid and also helps for joining the tables later when I need all the data in one spot. Like with the users, I also seeded these two tables with dummy data to simulate having people who care about my site enough to use it.
-                    
+                    .board div {
+                        height: 100px;
+                        width: 100px;
+                        outline: 1px solid;
+                    }
+                      </code></pre>
+                  <p>
+                    So to begin with, the two sideboards are arranged in a 3 column grid with the actual board grid. 
+                    Then the board grid itself is also a 3 columnn grid, each column having 3 tile <code>divs</code>. 
+                    The tiles were also given some height and width. 
+                    Otherwise, they wouldn't make any shape, which is the reason why the pure HTML has nothing resembling a Tic-Tac-Toe board.
+                    <p>
+                        Lastly, and probably most interesting, is the <code>overflow: hidden</code> in the board styling. 
+                        This is what's getting rid of all the outer borders of the board, leaving it looking like a hash tag.
+                        The way this works - but don't quote me on this - is because the borders flow outside the <code>div</code> by nature of being borders, meaning they get hidden.
+                        Whatever it is, it's not something I would have worked out without looking it up.
+                    </p>
+                    <p>
+                        Regardless, I think it all looks much better now...
+                    </p>
+
+
+                  </p>
+            </div>
+          </section>
+        <div class="parallaxParent">
+          <div style="background-image: url(images/tictactoe.png)"></div>
+        </div>
+        <section class="parallax-section">
+          <div class="parallax-content">
+            <h1>The Function Revolution</h1>
+            <p>
+                
+            Great, so the site looks alright now but we still can't play yet. Right now, it's all purely aesthetic. Even the buttons don't do anything.
+            This is where JavaScript comes in: 
+                
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                let isPlayerOne = true
+                let concluded = false
+                let playerMoves = 0
+                let playerOneScore = 0
+                let playerTwoScore = 0
+                let triviaIndex = 0
+
+                const tileArray = document.querySelectorAll('.tileEmpty')
+
+                for (tile of tileArray) {
+                    tile.addEventListener('click', playerMove)
+                }
+
+                function playerMove(event) {
+                    let targetTile = event.target
+                    if (targetTile.classList.contains('tileEmpty')) {
+                        if (isPlayerOne) {
+                            targetTile.classList = 'tileX'
+                            isPlayerOne = false
+                            mainMessage.textContent = "Player 2's turn!"
+                        } else {
+                            targetTile.classList = 'tileO'
+                            isPlayerOne = true
+                            mainMessage.textContent = "Player 1's turn!"
+                        }
+                    }
+                    playerMoves++
+                    checkVictory()
+                }
+
+                function checkVictory() {
+                    if (playerMoves >= 5) {
+                        scanRows()
+                        scanColumns()
+                        scanDiagonals()
+                        if (playerMoves === 9 && !concluded) {
+                            mainMessage.textContent = "It's a draw!"
+                            concluded = true
+                        } else if (concluded) {
+                            mainMessage.textContent = `${winner} has won!`
+                        }
+                    }
+                }
+            </code></pre>
+            <p>
+                This is just a snippet of my surprisingly verbose code but it's where almost all the game logic is. 
+                Anything relevant to the state of the game, like player scores and who's turn it is, are all kept track of in variables.
+                From here, it's just assigning functions to elements that need to do things when clicked.
+                The key methods for this were <code>document.querySelector</code> and the similar <code>document.querySelectorAll</code>.
+                This allowed me to select certain elements like the empty tiles on the grid, which was stored as an array under <code>tileArray</code>. 
+                With all the tiles selected, I could then let them detect if they were clicked through the <code>addEventListener</code> method.
+            </p>
+
+            <p>
+                At this point, if any of the tiles were clicked, the clicked tile would run the assigned function <code>playerMove()</code>.
+            This function takes the tile itself as its target and checks its class. If it is empty, it checks to see which player's turn it is and then
+            changes the tile's class to the current player's symbol, filling it with an X or O.
+            </p>
+            <p>
+                If you notice, I am also checking whether a player has won with every single move they make through the <code>checkVictory()</code> function.
+                However, it only goes through with the rest of its code if the minimum number of moves for a victory have been made to save computing power.
+                The way I actually check for a victory is through 3 functions which each scan every possible winning row, column, or diagonal: 
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                function scanRows() {
+                    if (!concluded) {
+                        i = 0
+                        let rowArray = []
+                
+                        while (i < 7 && !concluded) {
+                            rowArray = [];
+                            let tile1 = tileArray[i].classList
+                            let tile2 = tileArray[i+1].classList
+                            let tile3 = tileArray[i+2].classList
+                            rowArray.push(tile1,tile2,tile3)
+                
+                            if (!tile1.contains('tileEmpty')) {
+                                if (rowArray.every(checkClassX)) {
+                                    playerOneVictory()
+                                } else if (rowArray.every(checkClassO)) {
+                                    playerTwoVictory()
+                                } else {
+                                    i += 3
+                                }
+                            } else {
+                                i += 3
+                            }
+                        }
+                    }
+                }
+                
+                function scanColumns() {
+                    if (!concluded) {
+                        i = 0
+                        let columnArray = []
+                
+                        while (i < 3 && !concluded) {
+                            columnArray = []
+                            let tile1 = tileArray[i].classList
+                            let tile2 = tileArray[i+3].classList
+                            let tile3 = tileArray[i+6].classList
+                            columnArray.push(tile1,tile2,tile3)
+                
+                            if (!tile1.contains('tileEmpty')) {
+                                if (columnArray.every(checkClassX)) {
+                                    playerOneVictory()
+                                } else if (columnArray.every(checkClassO)) {
+                                    playerTwoVictory()
+                                } else {
+                                    i++
+                                }
+                            } else {
+                                i++
+                            }
+                        }
+                    }
+                }
+                
+                function scanDiagonals() {
+                    let middleTile = tileArray[4].classList
+                    let firstDiagonal = [
+                        tileArray[0].classList,
+                        middleTile,
+                        tileArray[8].classList,
+                    ]
+                
+                    let secondDiagonal = [
+                        tileArray[2].classList,
+                        middleTile,
+                        tileArray[6].classList,
+                    ]
+                
+                    if (!middleTile.contains('tileEmpty')) {
+                        if (firstDiagonal.every(checkClassX) || secondDiagonal.every(checkClassX)) {
+                            playerOneVictory()
+                        } else if (firstDiagonal.every(checkClassO) || secondDiagonal.every(checkClassO)) {
+                            playerTwoVictory()
+                        }
+                    }
+                }
+            </code></pre>
+            <p>
+                There might be better ways to check for a victory, and yeah most of my classmates had different methods, but it does work for my purposes. 
+                Of course, if any of these functions return a true result (i.e. there's a three-in-a-row somewhere) then the round concludes and the winning player's score is incremented.
+                If the players want to continue, then there are buttons for a new round or a whole new game, both of which simply set things back to the way they were.
+                That's really all there is to the code for Tic-Tac-Toe: letting elements 'listen' for clicks and then doing stuff to change things.
+            </p>
+        </div>
+    </section>
+    <div class="parallaxParent">
+        <div style="background-image: url(images/project1/tictactoe.gif)"></div>
+    </div>
+        <section class="parallax-section">
+            <div class="parallax-content">
+                <h1>What could have been...</h1>
+                <p>
+                    Remember how I had that leftover <code>bg-image div</code>? The reason why it was there was because I wanted to go for a 'history' theme.
+                    The background would change depending on how the game was going (e.g. going from Ancient Egypt to Ancient Rome as the board filled up).
+                    Everyone else was doing Tic-Tac-Toe too so everyone figured that they needed to do something unique and this was my idea. 
+                    Unfortunately, I couldn't figure out how to make the game UI fit nicely with the wildly different backgrounds and also I did not have the time or willpower
+                    to do something like this for my first project, especially one that wasn't graded on aesthetics.
+                </p>
+                <p>Instead, I made a compromise and included a trivia button. All it does it cycle through an array of Tic-Tac-Toe trivia
+                    that I picked up from Wikipedia and displays it on the web page. I only wish I could have made it cooler somehow.
+                </p>
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                let triviaIndex = 0
+
+                const triviaBtn = document.querySelector('.trivia-btn')
+
+                triviaBtn.addEventListener('click', handleTrivia)
+
+                let triviaContent = document.querySelector('.trivia-content')
+                
+                const triviaArray = [
+                    "The earliest recorded games of Tic-Tac-Toe date back to 1300 BC in Ancient Egypt, played on roof tilings of all things.",
+                    "There was a variation of Tic-Tac-Toe that the Romans played. It was called terni lapilli and each player only had three counters which they had to keep moving around.",
+                    "No one is really sure where the name Tic-Tac-Toe came from. The first time the name was used was in the 1880s, apparently from the sounds pencils made when you drew the symbols.",
+                    "Alternative names for Tic-Tac-Toe include 'Noughts and Crosses' and 'Xs and O's'. Some weirdos may also call it 'Tick-Tat-Toe' or 'Tit-Tat-Toe'.",
+                    "Tic-Tac-Toe was one of the first video games ever created, under the name OXO in 1952. Players could even play, and lose, against a computer player.",
+                    "In 1975, an entire computer capable of playing Tic-Tac-Toe was made out of Tinkertoys - basically sets of colorful sticks and strings for little kids. Still better than my gaming setup.",
+                    "Tic-Tac-Toe is a classic example of a 'solved game' and in its case, a 'futile game'. Assuming both players have a functional brain, the game will always be forcibly ended in a tie.",
+                    "Because of its simplicity, Tic-Tac-Toe is often used as a teaching tool for kids to learn things like sportsmanship. Perhaps some gamers would stand to benefit from playing a bit more Tic-Tac-Toe."
+                ]
+
+                function handleTrivia() {
+                    //let randomTriviaIndex = Math.floor(Math.random() * triviaArray.length)
+                    triviaContent.textContent = triviaArray[triviaIndex]
+                    triviaIndex++
+                    if (triviaIndex === triviaArray.length) {
+                        triviaIndex = 0
+                    }
+                }
+                </code></pre>
+                <span class="subtitle">Does anyone even read anymore?</span>
+                Anyway, that’s it for Tic-Tac-Toe! Feel free to move on to my other projects: 
+                <a class="bottom-link" href="projectOne" style="color: green;">GameShare&trade;</a>, 
+                <a class="bottom-link" href="projectThree" style="color: #d93900;">Petrol Down Under</a>, or 
+                <a class="bottom-link" href="projectFour" style="color: #0047ab;">Project 4</a> 
+
+
                 </p>
             </div>
         </section>
-        <div id="parallax3" class="parallaxParent">
-            <div style="background-image: url(https://shorturl.at/Hws05);"></div>
-        </div>
-        <section class="parallax-section">
-            <div class="parallax-content">
-                <h1>Design ideas</h1>
-                <p>
-                    Given that we were all doing Tic-Tac-Toe, I had to try and put a unique spin on my website. For my spin, I decided to try doing a ‘history’ theme to explore the long history of the game itself. Initially, I wanted to have different backgrounds, each representing a period of time over the centuries of Tic-Tac-Toe’s existence. However, I quickly ran into a problem with this approach: the design of my board would conflict with the background, being too bright or too dark and just being hard to see in general. With most of my time spent on making the game work in the first place, I switched gears and tried to do an ‘arts and crafts’ theme. I picked a font that looked handwritten, a background colour that looked like brown paper, and simple monochromatic colors for the buttons. Luckily, I still kept some of my original ideas in the Trivia section which just spews out historical trivia about Tic-Tac-Toe. 
-                </p>
-            </div>
-        </section>
-        </div>  
-</main>
+      </div> <!-- wrapper div -->
+    </main>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="../barba.js"></script>
-    <script class="main-script" src="../everything.js"></script>
-</body>
+    <script src="barba.js"></script>
+    <script class="main-script" src="everything.js"></script>
+
+  </body>
 </html>

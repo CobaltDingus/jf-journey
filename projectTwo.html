@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <title>GameShare</title>
-    <!-- <link rel="stylesheet" href="projects_style.css">
-    <link rel="stylesheet" href="gases.css">
-    <link rel="stylesheet" href="barba.css"> -->
     <link rel="stylesheet" href="everything.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,17 +50,17 @@
           </div>
           <img class="header-bg" src="images/brain2.jpeg" alt="" />
         </section>
-        <div id="parallax1" class="parallaxParent darken ralof">
+        <div class="parallaxParent darken ralof">
           <div
             style="
-              background-image: url(https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/04/youre-finally-awaken-meme-with-caption.jpg);
+              background-image: url(images/project2/ralof.png);
             "
           ></div>
         </div>
-        <section class="parallax-section">
+        <section class="parallax-section" style="border: 10px darkgreen; border-style: ridge none;">
           <div class="parallax-content">
             <div></div>
-            <h1>Laying the Foundations</h1>
+            <h1>Loading <span style="color: green">GameShare&trade;</span>... </h1>
             <p>
               For this project, we had to make a CRUD app, which stands for
               <strong>CREATE-READ-UPDATE-DESTROY</strong>, referring to the
@@ -126,10 +123,10 @@
             >
           </div>
         </section>
-        <div id="parallax2" class="parallaxParent">
+        <div class="parallaxParent">
           <div style="background-image: url(images/project2/users3.png)"></div>
         </div>
-        <section class="parallax-section">
+        <section class="parallax-section" style="border: 10px darkgreen; border-style: ridge none;">
           <div class="parallax-content">
             <h1>Working with Databases</h1>
             <p>
@@ -260,12 +257,12 @@
             </p>
           </div>
         </section>
-        <div id="parallax3" class="parallaxParent">
+        <div class="parallaxParent">
           <div style="background-image: url(images/project2/gshare_live.png)"></div>
         </div>
-        <section class="parallax-section">
+        <section class="parallax-section" style="border: 10px darkgreen; border-style: ridge none;">
           <div class="parallax-content">
-            <h1>Coding GameShare</h1>
+            <h1>Coding <span style="color: green">GameShare&trade;</span></h1>
             <p>
                 
             For the website’s features, I started with the essential before considering anything else. These would be the features that carried out the necessary CRUD actions as per our objective. 
@@ -330,7 +327,7 @@
                 &lt;/body&gt;
                 &lt;/html&gt;
             </code></pre>
-            <p>This is the base layout for every page in GameShare meaning that it applies for every page no matter what content the page actually has.
+            <p>This is the base layout for every page in <span style="color: green">GameShare&trade;</span> meaning that it applies for every page no matter what content the page actually has.
                 You can see this base layout also includes a header (which is a custom layout for just the header of the page) and a content body which depends on what page layout I want to render. This for example is all I need to write for each game page: 
             </p>
             <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
@@ -384,7 +381,7 @@
                 </ul>
             </p>
             <p>
-                And that covers most of the important parts of GameShare's code... wait a sec <span class="hacked">I'm dropping out again...</span>
+                And that covers most of the important parts of the code for <span style="color: green">GameShare&trade;</span>... wait a sec <span class="hacked">I'm dropping out again...</span>
             </p>
                 <div>
                 <p>|</p>
@@ -406,10 +403,22 @@
     <div class="parallaxParent">
         <div style="background-image: url(images/project2/gameshare.gif)"></div>
     </div>
-        <section class="parallax-section">
+        <section class="parallax-section" style="border: 10px darkgreen; border-style: ridge none;">
             <div class="parallax-content">
-                <h1>Middlewares</h1>
-                <p>As you may have noticed, some of the CRUD functions should only work if you are logged in and messing with your own data.</p>
+                <h1>Enjoying <span style="color: green">GameShare&trade;</span>? Be sure to leave a rating!</h1>
+                <p>
+                In designing <span style="color: green">GameShare&trade;</span>, I tried to be practical when it came to deciding my features. There were several things I wanted to add: a way to display all games in a list, a way to search for games or users, and biggest of all, a way for users to add new games that weren’t in the database. None of these were necessary to meet the objective so I left them aside to work on if I had spare time. I did also plan a chat feature to actually connect with other users but I did not manage to get it working in time for my project submission. Bits and pieces of it are still in the code so if you’re interested in sifting around for it, be my guest.
+                </p>
+                <p>
+                As I am probably going to make abundantly clear throughout this website, visual design is not my strong suit. I did my best to try and emulate the styles and colors of gaming websites I used (e.g. Nexus Mods) and while I do think the site could be more polished in some areas (like the UIs), I am fairly happy with what I made. If I went back and did it again, I would definitely not even bother with the chat feature as it ultimately took up a lot of time for something that wasn’t needed at all.
+                </p>
+                That’s it for <span style="color: green">GameShare&trade;</span>! Feel free to move on to my other projects: 
+                <a class="bottom-link" href="projectOne" style="color: red;">Tic-Tac-Toe</a>, 
+                <a class="bottom-link" href="projectThree" style="color: #d93900;">Petrol Down Under</a>, or 
+                <a class="bottom-link" href="projectFour" style="color: #0047ab;">Project 4</a> 
+
+
+                </p>
             </div>
         </section>
       </div> <!-- wrapper div -->
@@ -418,7 +427,6 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>

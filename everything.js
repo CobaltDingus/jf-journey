@@ -2,11 +2,12 @@ initEverything()
 
 function initEverything() {
 
+    hljs.highlightAll();
+
 let burgerMenu = document.querySelector('.burger-menu')
 burgerMenu.addEventListener('click', toggleDropdown)
 
 let dropdownMenu = document.querySelector('.dropdown')
-console.log(dropdownMenu);
 
 function toggleDropdown() {
     if (dropdownMenu.classList.contains('visible')) {
