@@ -146,18 +146,34 @@ a {
     color: whitesmoke;
     border: 1px solid #0047ab;
     top: 120px;
-    right: 40px;
+    right: 35px;
     display: none;
 }
 
 .visible {
+    padding-top: 0px;
     display: block;
+}
+
+.jesus {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 .dropdown-li {
     list-style: none;
     text-align: right;
-    
+    padding: 20px;
+    border: 1px solid black;
+    margin: 0px;
+}
+
+.dropdown-li > a {
+    color: black;
+    font-family: "Special Elite", system-ui;
+    font-weight: bold;
+    text-shadow: 0 0 20px whitesmoke,
+             0 0 30px whitesmoke,
+             0 0 40px whitesmoke;
 }
 
 .burger-menu {
