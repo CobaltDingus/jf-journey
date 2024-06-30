@@ -92,9 +92,7 @@
                 and <strong>usergamelist:</strong> for each user's list of games
               </li>
             </ul>
-            <pre
-              class="theme-atom-one-dark"
-            ><code class="hljs-code language-sql">
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-sql">
                     CREATE TABLE users (
                         id SERIAL PRIMARY KEY,
                         username TEXT NOT NULL,
@@ -138,8 +136,7 @@
               With the database ready, I now had to seed it with dummy data.
               Using JavaScript, I connected to the database and made a request
               to add new data to it. This is an example of the C(reating) part
-              of CRUD, although ironically, it doesn't count for the overall
-              objective (explanation later).
+              of CRUD.
             </p>
             <pre
               class="theme-atom-one-dark"
@@ -226,9 +223,7 @@
               communicating with PostgreSQL:
             </p>
 
-            <pre
-              class="theme-atom-one-dark"
-            ><code class="hljs-code language-javascript">
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
                         const db = require('./index.js')
                         
                         const sql = `INSERT INTO users (username, email, password_hashed) VALUES ($1, $2, $3);`
@@ -266,39 +261,164 @@
           </div>
         </section>
         <div id="parallax3" class="parallaxParent">
-          <div style="background-image: url(https://shorturl.at/Hws05)"></div>
+          <div style="background-image: url(images/project2/gshare_live.png)"></div>
         </div>
         <section class="parallax-section">
           <div class="parallax-content">
-            <h1>Design ideas</h1>
+            <h1>Coding GameShare</h1>
             <p>
-              Given that we were all doing Tic-Tac-Toe, I had to try and put a
-              unique spin on my website. For my spin, I decided to try doing a
-              ‘history’ theme to explore the long history of the game itself.
-              Initially, I wanted to have different backgrounds, each
-              representing a period of time over the centuries of Tic-Tac-Toe’s
-              existence. However, I quickly ran into a problem with this
-              approach: the design of my board would conflict with the
-              background, being too bright or too dark and just being hard to
-              see in general. With most of my time spent on making the game work
-              in the first place, I switched gears and tried to do an ‘arts and
-              crafts’ theme. I picked a font that looked handwritten, a
-              background colour that looked like brown paper, and simple
-              monochromatic colors for the buttons. Luckily, I still kept some
-              of my original ideas in the Trivia section which just spews out
-              historical trivia about Tic-Tac-Toe.
+                
+            For the website’s features, I started with the essential before considering anything else. These would be the features that carried out the necessary CRUD actions as per our objective. 
+            To do anything with my database however, I needed 2 new tools we had picked up: <strong>Express and EJS (and Express-EJS-Layouts to integrate them)</strong>.
+                
             </p>
-          </div>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                router.get('/games/:id', (req, res) => {
+                    const gameId = req.params.id
+                    const sqlGameDetails = `SELECT * FROM games WHERE id = $1;`
+                    
+                    db.query(sqlGameDetails, [gameId], (err, result) => {
+                        if (err) console.log(err);
+
+                        const game = result.rows[0]
+                        const sqlGameUsers = `
+                            SELECT * 
+                            FROM usergamelist 
+                            JOIN users 
+                            ON (usergamelist.user_id = users.id) 
+                            WHERE game_id = $1;
+                        `
+                        db.query(sqlGameUsers, [gameId], (err, result) => {
+                            if (err) console.log(err);
+                
+                            const gameUsers = result.rows
+                
+                            res.render('show', { game: game, gameUsers: gameUsers })
+                        })
+                    })
+                })
+            </code></pre>
+            <p>
+                <strong>Express</strong> handled all the server side stuff like routing.
+                Requests from the client would go through here if they visited any URL with a pattern like <code>gameshare.com/games/:id</code>.
+                The ":id" in this case could be any anything. Whatever it is, it would be taken and put into an SQL statement to see if a game of that ID existed already in the database and if so, retrieve whatever data is being asked for.
+                As you might see, I actually have two statements: one to get the game details and one to get a list of the users who play said game.
+                Only after all this data is retrieved does the router render a web page for the user and for that, we now turn to <strong>EJS</strong>.
+            </p>
+
+            <p>
+                <strong>EJS</strong> essentially allows you to run JavaScript inside a HTML file. That alone is nice but with <strong>Express-EJS-Layouts</strong>, you can make templates for web pages filled with dynamically generated content.
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                    &lt;title&gt;GameShare&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="/style.css"&gt;
+                    
+                &lt;body&gt;
+                    &lt;header id="top"&gt;
+                        &lt;%- include('_header') %&gt;
+                    &lt;/header&gt;
+                    &lt;div class="wrapper"&gt;
+                        &lt;main&gt;
+                            &lt;%- body %&gt;
+                        &lt;/main&gt;
+                    &lt;/div&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+            <p>This is the base layout for every page in GameShare meaning that it applies for every page no matter what content the page actually has.
+                You can see this base layout also includes a header (which is a custom layout for just the header of the page) and a content body which depends on what page layout I want to render. This for example is all I need to write for each game page: 
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
+                &lt;h1 class="header"&gt;<%= game.title %>&lt;/h1&gt;
+                &lt;img class="game-image" src="<%= game.image_url %>" alt="Image of game"&gt;
+                &lt;div class="paragraph"&gt;
+                    &lt;p&gt;Description: <%= game.description %>&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;section&gt;
+                    &lt;div class="user-games"&gt;
+                        &lt;h2 class="tagline"&gt;Users&lt;/h2&gt;
+                        &lt;table&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;&lt;/th&gt;
+                                &lt;th&gt;Username&lt;/th&gt;
+                                &lt;th&gt;Remarks&lt;/th&gt;
+                            &lt;/tr&gt;
+                            <% for (let gameUser of gameUsers) {%>
+                                &lt;tr&gt;
+                                    &lt;td&gt;&lt;img src="<%= gameUser.profile_image %>" alt="Profile picture">&lt;/td&gt;
+                                    &lt;td&gt;&lt;a class="player" href="/users/<%= gameUser.user_id %>"><%= gameUser.username %>&lt;/a&gt;&lt;/td&gt;
+                                    &lt;td&gt;&lt;span class="remark"><%= gameUser.remark %>&lt;/span&gt;&lt;/td&gt;
+                                &lt;/tr&gt;
+                            <% } %>
+                        &lt;/table&gt;
+                    &lt;/div&gt;
+                &lt;/section&gt;
+            </code></pre>
+            <span class="subtitle">Now isn't this nice and clean?</span>
+            <p>
+                All the <code><% %></code>, or the 'crab hands' as we called them in class, signify embedded JavaScript (which is what EJS stands for). 
+                The code creates and fills new HTML elements with data from JavaScript variables. If you need a reminder of where the data came from, it was through the <strong>Express</strong> router from earlier:
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                db.query(sqlGameUsers, [gameId], (err, result) => {
+                    if (err) console.log(err);
+        
+                    const gameUsers = result.rows
+        
+                    res.render('show', { game: game, gameUsers: gameUsers })
+                })
+            </code></pre>
+            <span class="subtitle">'show' is the name of the games template and 'game' and 'gameUsers' are the data retrieved from the database via the query(s).</span>
+            <p>
+                With <strong>Express</strong> and <strong>EJS</strong> together, I could do all my CRUD functions:
+                <ul>
+                    <li>C(reating) was fulfilled through forms that allowed users to sign up and create an account. Additionally, users can also create entries in the database by adding new games to their list of games.</li>
+                    <li>R(eading) was achieved any time data was displayed on a page.</li>
+                    <li>U(pdating) was fulfilled by allowing users to update their remarks for games as well as their general profile information.</li>
+                    <li>D(estroying) was fulfilled by allowing users to remove entries from their game lists.</li>
+                </ul>
+            </p>
+            <p>
+                And that covers most of the important parts of GameShare's code... wait a sec <span class="hacked">I'm dropping out again...</span>
+            </p>
+                <div>
+                <p>|</p>
+                <br />
+              </div>
+              <div class="hackerman">
+                <p>
+                  -> Hey, it's your local Hackerman again. JF forgot to mention that he created some <em style="color: yellow;">'middlewares'</em>. This is basically extra code that runs before you get to a route.
+                  In particular, JF has some middlewares to determine if a user is logged in and whether they are on their own profile to check whether they can edit things.
+                  This means I can't just go to a URL like <em style="color: plum;">"users/SomeOtherPersonsID/edit-profile"</em> and vandalize their page because, even if I'm logged in, my user ID won't be the same as the one I'm trying to edit. Blast!
+                </p>
+              </div>
+              <div>
+                <br />
+                <p>|</p>
+              </div>
+        </div>
+    </section>
+    <div class="parallaxParent">
+        <div style="background-image: url(images/project2/gameshare.gif)"></div>
+    </div>
+        <section class="parallax-section">
+            <div class="parallax-content">
+                <h1>Middlewares</h1>
+                <p>As you may have noticed, some of the CRUD functions should only work if you are logged in and messing with your own data.</p>
+            </div>
         </section>
-      </div>
+      </div> <!-- wrapper div -->
     </main>
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>

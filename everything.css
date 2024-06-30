@@ -208,10 +208,11 @@ a {
     overflow: hidden;
 }
 .parallaxParent > * {
-    height: 200%;
+    height: 100%;
     position: relative;
-    top: -100%;
+    top: -40%;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .project-header, .parallax-section {
@@ -318,11 +319,26 @@ ul {
 }
 
 .darken {
-    filter: brightness(20%);
+    filter: brightness(50%);
 }
 
 .ralof {
     height: 50vh;
+
+}
+
+.ralof > * {
+    height: 200%;
+    position: relative;
+    top: -100%;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* =================================== WIPE =================================== */
+.wipe {
+    height: 100vh;
 }
 
 /* barba */
