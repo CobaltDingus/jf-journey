@@ -1,75 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow:visible">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <title>Tic Tac Toe</title>
+<html lang="en" style="overflow: visible">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>GameShare</title>
     <!-- <link rel="stylesheet" href="projects_style.css">
     <link rel="stylesheet" href="gases.css">
     <link rel="stylesheet" href="barba.css"> -->
-    <link rel="stylesheet" href="everything.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
-
-
-</head>
-<body data-barba="wrapper">
-    
+    <link rel="stylesheet" href="everything.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-barba="wrapper">
     <main data-barba="container" data-barba-namespace="home">
-        <div class="transition"></div>
-        <nav class="project-nav">
-            <a href="index.html">
-                <div class="logo-main">
-                <div class="gas co">
-                    <span class="number">27</span>
-                    <h2 class="symbol">Jf</h2>
-                    <p class="name">58.933</p>
-                </div>
-                </div>
-            </a>
-                <div burger-menu>
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                </div>
-        </nav>
-    <!-- <main class="content-wrapper"> -->
-        
-        <section class="project-header">
-            <h1 class="project-title">PROJECT 2: <span style="color: green;">GameShare</span></h1>
-            <h3 class="project-goal">
-                Objective: 
-                Build a full-stack CRUD app.
-            </h3>
-            <h3 class="project-tools">
-            Tools: PostgreSQL, Express, EJS, bcrypt
-            </h3>
-            <div class="overview-image">
-                <img src="images/gameshare.png" alt="">
+      <div class="transition"></div>
+      <nav class="project-nav">
+        <a href="index.html">
+          <div class="logo-main">
+            <div class="gas co">
+              <span class="number">27</span>
+              <h2 class="symbol">Jf</h2>
+              <p class="name">58.933</p>
             </div>
-            <img class="header-bg" src="images/brain2.jpeg" alt="">
+          </div>
+        </a>
+        <div class="burger-menu">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </div>
+        <ul class="dropdown">
+          <li class="dropdown-li"><a href="about.html">About</a></li>
+          <li class="dropdown-li"><a href="projectOne.html">Project 1</a></li>
+          <li class="dropdown-li"><a href="projectTwo.html">Project 2</a></li>
+          <li class="dropdown-li"><a href="projectThree.html">Project 3</a></li>
+          <li class="dropdown-li"><a href="projectFour.html">Project 4</a></li>
+        </ul>
+      </nav>
+      <div class="wrapper">
+        <section class="project-header">
+          <h1 class="project-title">
+            PROJECT 2: <span style="color: green">GameShare&trade;</span>
+          </h1>
+          <h3 class="project-goal">Objective: Build a full-stack CRUD app.</h3>
+          <h3 class="project-tools">Tools: PostgreSQL, Express, EJS, bcrypt</h3>
+          <div class="overview-image">
+            <img src="images/gameshare.png" alt="" />
+          </div>
+          <img class="header-bg" src="images/brain2.jpeg" alt="" />
         </section>
         <div id="parallax1" class="parallaxParent darken ralof">
-            <div style="background-image: url(https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/04/youre-finally-awaken-meme-with-caption.jpg);"></div>
+          <div
+            style="
+              background-image: url(https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/04/youre-finally-awaken-meme-with-caption.jpg);
+            "
+          ></div>
         </div>
         <section class="parallax-section">
-            <div class="parallax-content">
-                <div>
-           
-                </div>
-                <h1>Laying the Foundations</h1>
-                <p>For this project, I decided to make something related to games. After some thinking, GameShare was brought into existence: a website where people could share what games they played and find other people who share their interests. Kinda like a gaming rip-off of Tinder.</p>
-                <p>With my idea set in stone, I now had to make a database for all the information I needed to store. PostgreSQL was the tool that we were given for this purpose. It’s a relational database management system. In short, it means we just stuff all our data into tables with columns of attributes and rows and rows of data all following the same structure.</p>
-                <p>For my app, I decided that I needed 3 tables:</p>
-                <ul>
-                    <li><strong>users:</strong> for user information,</li>
-                    <li><strong>games:</strong> for game information,</li>
-                    <li>and <strong>usergamelist:</strong> for each user's list of games</li>
-                </ul>
-                <pre class="theme-atom-one-dark"><code class="hljs-code language-sql">
+          <div class="parallax-content">
+            <div></div>
+            <h1>Laying the Foundations</h1>
+            <p>
+              For this project, we had to make a CRUD app, which stands for
+              <strong>CREATE-READ-UPDATE-DESTROY</strong>, referring to the
+              actions you can take with a database. In short, this meant making
+              a website that gave users the ability to do all four actions to
+              the data in a connected database. Being a <em>gamer</em>, I
+              decided to make something related to games. After some thinking,
+              <strong style="color: green">GameShare&trade;</strong> was brought
+              into existence: a website where people could share what games they
+              played and find other people who share their interests. Kinda like
+              a gaming rip-off of Tinder<sup>&reg;</sup>.
+            </p>
+            <p>
+              With my idea set in stone, I now had to make a database for all
+              the information I needed to store. PostgreSQL was the tool that we
+              were given for this purpose. It’s a relational database management
+              system, which just means we just stuff all our data into tables
+              with columns of attributes and rows and rows of data all following
+              the same structure.
+            </p>
+            <p>For my app, I decided that I needed 3 tables:</p>
+            <ul>
+              <li><strong>users:</strong> for user information,</li>
+              <li><strong>games:</strong> for game information,</li>
+              <li>
+                and <strong>usergamelist:</strong> for each user's list of games
+              </li>
+            </ul>
+            <pre
+              class="theme-atom-one-dark"
+            ><code class="hljs-code language-sql">
                     CREATE TABLE users (
                         id SERIAL PRIMARY KEY,
                         username TEXT NOT NULL,
@@ -96,39 +130,181 @@
                         FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE
                     );
                     </code></pre>
-                <span class="subtitle">FOREIGN KEY indicates that the key is derived from a key in another table. If said key is deleted, then anything referencing it will get deleted too.</span>
-            </div>
+            <span class="subtitle"
+              >FOREIGN KEY indicates that the key is derived from a key in
+              another table. If said key is deleted, then anything referencing
+              it will get deleted too.</span
+            >
+          </div>
         </section>
         <div id="parallax2" class="parallaxParent">
-            <div style="background-image: url(images/project2/users3.png);"></div>
+          <div style="background-image: url(images/project2/users3.png)"></div>
         </div>
         <section class="parallax-section">
-            <div class="parallax-content">
-                <h1>What the heck are you building?</h1>
-                <p>
-                    
-                    Obviously, we weren’t just going to make a database that just stores users and nothing else. Being a gamer, I decided to make my website about games. Users would be able to show off a list of their favourite games to compare with other users and hopefully get in contact with people who share their interest. This meant I had to make two tables: one for all the different games and another to show the games for each user.
-                    
-                    Pretty much the same thing here except for the foreign keys. These are meant to represent the keys of another table, which helps to make sure the data is valid and also helps for joining the tables later when I need all the data in one spot. Like with the users, I also seeded these two tables with dummy data to simulate having people who care about my site enough to use it.
-                    
-                </p>
+          <div class="parallax-content">
+            <h1>Working with Databases</h1>
+            <p>
+              With the database ready, I now had to seed it with dummy data.
+              Using JavaScript, I connected to the database and made a request
+              to add new data to it. This is an example of the C(reating) part
+              of CRUD, although ironically, it doesn't count for the overall
+              objective (explanation later).
+            </p>
+            <pre
+              class="theme-atom-one-dark"
+            ><code class="hljs-code language-javascript">
+                        const db = require('./index.js')
+                        const bcrypt = require('bcrypt')
+                        const saltRounds = 10
+
+                        const username = 'CobaltDingus'
+                        const dummyEmail = 'cobalt@gmail.com'
+                        const plainTextPassword = 'gaming'
+
+                        const sql = `
+                        INSERT INTO users (username, email, password_hashed) VALUES ($1, $2, $3);
+                        `
+
+                        function createSingleUser() {
+                            const name = username
+                            const email = dummyEmail
+                            const password = plainTextPassword
+
+                            bcrypt.genSalt(saltRounds, (err, salt) => {
+                                bcrypt.hash(password, salt, function(err, hash) {
+                                    db.query(sql, [name, email, hash], (err, result) => {
+                                        if (err) console.log(err);
+                                    })
+                                });
+                            });
+                        }
+
+                        createSingleUser()
+                    </code></pre>
+            <span class="subtitle"
+              >Surely putting my real email and password for
+              <span class="hacked"
+                >a quick demo will be fine, right?</span
+              ></span
+            >
+            <div>
+              <p>|</p>
+              <br />
             </div>
+            <div class="hackerman">
+              <p>
+                -> Hey, it's your local Hackerman here to explain
+                <strong style="color: red">bcrypt</strong>. This is a module
+                containing functions to secure user passwords and make my job
+                harder >:(
+              </p>
+              <p>
+                -> The way it works is by first generating
+                <em style="color: aquamarine">salt</em>, a string of random
+                numbers that will be attached to your password. The
+                <em style="color: aquamarine">salted password</em> is then run
+                through a hashing algorithm to turn it into an abomination of
+                random characters that I will have to spend years trying to
+                reverse engineer.
+              </p>
+              <p>
+                -> This <em style="color: blue">hashed password</em> is what is
+                sent to the database along with the user's name and email. The
+                trick then is that a password passed through all the same
+                <strong style="color: red">bcrypt</strong> functions will always
+                return the same <em style="color: blue">hashed password</em>.
+                This is how your plain text password is checked upon logging
+                into the website.
+              </p>
+              <p>
+                -> And that's it! Hackerman out!
+                <span style="text-decoration: line-through"
+                  >Just ignore the fact that I stole all your credit card info
+                  while you were reading this.</span
+                >
+              </p>
+            </div>
+            <div>
+              <br />
+              <p>|</p>
+            </div>
+            <p>
+              ...alright, I'm back. My service provider said they had to cut me
+              off because I didn't pay my bill or something? Anyway, back to
+              coding. In the pile of code above, there were 3 steps to
+              communicating with PostgreSQL:
+            </p>
+
+            <pre
+              class="theme-atom-one-dark"
+            ><code class="hljs-code language-javascript">
+                        const db = require('./index.js')
+                        
+                        const sql = `INSERT INTO users (username, email, password_hashed) VALUES ($1, $2, $3);`
+                    
+                        db.query(sql, [name, email, hash], (err, result) => {
+                            if (err) console.log(err);
+                        })
+                    </code></pre>
+            <p>
+              1. Connecting to the database. The index file contained all the
+              necessary code to import the database as an object to execute
+              functions.
+            </p>
+            <p>
+              2. Coming up with instructions. SQL statements are, by design,
+              meant to be somewhat understandable to non-coders. This one
+              basically says "I want to insert some data in the users table,
+              under these three columns, using three specific values for each
+              respectively (marked as placeholders for now)."
+            </p>
+            <p>
+              3. Making the actual query. Using the <code>.query</code> method
+              on the <code>db</code> variable, the <code>sql</code> statement is
+              sent the database, along with all the other info that's meant to
+              fill in the placeholders (i.e. the user's name, email, and hashed
+              password that was acquired earlier).
+            </p>
+            <div>-</div>
+            <p>
+              I then repeated this process with a loop to seed dummy data for 10
+              users to simulate people caring about and using my
+              website. With all the backend set up, I was ready to start with the
+              actual website.
+            </p>
+          </div>
         </section>
         <div id="parallax3" class="parallaxParent">
-            <div style="background-image: url(https://shorturl.at/Hws05);"></div>
+          <div style="background-image: url(https://shorturl.at/Hws05)"></div>
         </div>
         <section class="parallax-section">
-            <div class="parallax-content">
-                <h1>Design ideas</h1>
-                <p>
-                    Given that we were all doing Tic-Tac-Toe, I had to try and put a unique spin on my website. For my spin, I decided to try doing a ‘history’ theme to explore the long history of the game itself. Initially, I wanted to have different backgrounds, each representing a period of time over the centuries of Tic-Tac-Toe’s existence. However, I quickly ran into a problem with this approach: the design of my board would conflict with the background, being too bright or too dark and just being hard to see in general. With most of my time spent on making the game work in the first place, I switched gears and tried to do an ‘arts and crafts’ theme. I picked a font that looked handwritten, a background colour that looked like brown paper, and simple monochromatic colors for the buttons. Luckily, I still kept some of my original ideas in the Trivia section which just spews out historical trivia about Tic-Tac-Toe. 
-                </p>
-            </div>
+          <div class="parallax-content">
+            <h1>Design ideas</h1>
+            <p>
+              Given that we were all doing Tic-Tac-Toe, I had to try and put a
+              unique spin on my website. For my spin, I decided to try doing a
+              ‘history’ theme to explore the long history of the game itself.
+              Initially, I wanted to have different backgrounds, each
+              representing a period of time over the centuries of Tic-Tac-Toe’s
+              existence. However, I quickly ran into a problem with this
+              approach: the design of my board would conflict with the
+              background, being too bright or too dark and just being hard to
+              see in general. With most of my time spent on making the game work
+              in the first place, I switched gears and tried to do an ‘arts and
+              crafts’ theme. I picked a font that looked handwritten, a
+              background colour that looked like brown paper, and simple
+              monochromatic colors for the buttons. Luckily, I still kept some
+              of my original ideas in the Trivia section which just spews out
+              historical trivia about Tic-Tac-Toe.
+            </p>
+          </div>
         </section>
-    <!-- </main> -->
-</main>
+      </div>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -138,5 +314,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="barba.js"></script>
     <script class="main-script" src="everything.js"></script>
-</body>
+  </body>
 </html>
