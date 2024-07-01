@@ -1,7 +1,3 @@
-// barba.hooks.enter((data) => {
-//     console.log('e');
-//   });
-
 barba.hooks.after(() => {
     const bottomDOM = document.getElementsByTagName("body")[0]
     const newScript = document.createElement("script")

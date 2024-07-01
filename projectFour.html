@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: visible">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Project 4</title>
+    <link rel="stylesheet" href="everything.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap"/>
+  </head>
+  <body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="home">
+      <div class="transition"></div>
+      <nav class="project-nav">
+        <a href="index.html">
+          <div class="logo-main">
+            <div class="gas co">
+              <span class="number">27</span>
+              <h2 class="symbol">Jf</h2>
+              <p class="name">58.933</p>
+            </div>
+          </div>
+        </a>
+        <div class="burger-menu">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </div>
+        <ul class="dropdown">
+            <li class="dropdown-li" style="background-color: wheat;"><a href="projectOne.html" >Project 1</a></li>
+            <li class="dropdown-li" style="background-color: gold;"><a href="projectTwo.html">Project 2</a></li>
+            <li class="dropdown-li" style="background-color: tomato;"><a href="projectThree.html">Project 3</a></li>
+            <li class="dropdown-li" style="background-color: wheat;"><a href="projectFour.html">Project 4</a></li>
+          </ul>
+      </nav>
+      <div class="wrapper">
+        <section class="project-header">
+          <h1 class="project-title">
+            PROJECT 4: Final Project
+          </h1>
+          <h3 class="project-goal">Objective: Build... anything!</h3>
+          <h3 class="project-tools">Tools: ScrollMagic, barba.js, GSAP, highlight.js</h3>
+          <!-- <div class="overview-image">
+            <img src="images/project4/project4.png" alt="" />
+          </div> -->
+          <img class="header-bg" src="https://upload-os-bbs.hoyolab.com/upload/2023/08/18/246295471/7a62580e3153e95feafe23305354cc91_4882643318087573335.gif" alt="" />
+        </section>
+        <div class="parallaxParent darken ralof">
+          <div
+            style="
+              background-image: url(images/brain4.jpg);
+            "
+          ></div>
+        </div>
+        <section class="parallax-section" style="border-color: #0047ab; border-style: solid;">
+          <div class="parallax-content">
+            <h1>Beginning of the End</h1>
+            <p>
+                For the final project of SEB71, we were given free reign to make anything we wanted. I had a lot of trouble trying to come up 
+                with a concrete idea. I thought of making a website based on coding minigames. A website for teaching coding. Even a full blown
+                game. In the end, I thought to do something to celebrate my achievements in this course because, whether I think so or not, I have
+                done quite a lot in the 12 weeks of SEB71.
+            </p>
+            <p>
+                This website is more or less a portfolio. I'm hesistant to call it one because of the content I've put in this but regardless, 
+                it serves as a documentation of all the projects I've worked on. This will definitely be something that I will be updating very 
+                frequently so maybe someday, I'll be more sure of what it is. For now, I just hope it's not too boring.
+            </p>
+            <p>
+                It wasn't enough to just reflect on my projects though. I also wanted to try and force myself to use more artsy things so I tried out a 
+                bunch of new libraries. I'll be demystifying my site by going through them so if you don't want to ruin the magic, look away. 
+            </p>
+            </div>
+        </section>
+        <div class="parallaxParent">
+          <div style="background-color: black;"></div>
+        </div>
+        <section class="parallax-section" style="border-color: #0047ab; border-style: solid;">
+            <div class="parallax-content">
+                <h1>Coding the Beast</h1>
+                <p>
+                    The first library on the list is one that's present in every page: <strong>MagicScroll</strong>. Even now, you'll probably notice it as it 
+                    is responsible for both the parallax effects and the front page zoom animation.
+                </p>
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-css">
+                    .parallaxParent {
+                        height: 100vh;
+                        overflow: hidden;
+                    }
+                    .parallaxParent > * {
+                        height: 100%;
+                        position: relative;
+                        top: -40%;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                    }
+                        </code></pre>
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                    let parallaxController = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+    
+                    // build scenes
+                    let parallaxSections = document.querySelectorAll(".parallaxParent")
+                    let parallaxSectionsDiv = document.querySelectorAll(".parallaxParent > div")
+    
+                    for (let i = 0; i < parallaxSections.length; i++ ) {
+                    new ScrollMagic.Scene({
+                            triggerElement: parallaxSections[i]
+                        })
+                        .setTween(parallaxSectionsDiv[i], {y: "80%", ease: Linear.easeNone})
+                        .addTo(parallaxController);
+                    }
+                    </code></pre>
+                  <p>
+                    <strong>ScrollMagic</strong> works using <em>Controllers</em> and <em>Scenes</em>. Scenes are all the individual elements to be animated 
+                    and are added to a Controller which defines the rules under which they animate. In the case of the parallax scrolling,
+                    it triggers whenever a parallaxParent <code>div</code> is entered which then causes its child, the actual background image, 
+                    to slowly move vertically by 80% of its height, creating the slow background scroll effect.
+                  </p>
+                  <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                    let headController = new ScrollMagic.Controller()
+
+                    let headScene = new ScrollMagic.Scene({
+                                        triggerElement: ".filler",
+                                        triggerHook: 0.9,
+                                    })
+                                    .setTween([".head-image", ".main-nav", ".head-message"], 1, {scale: 10, display: 'none'})
+                                    .addTo(headController)
+                    
+                    let projectsController = new ScrollMagic.Controller()
+                    
+                    let whiteScene = new ScrollMagic.Scene({
+                                        triggerElement: ".trigger",
+                                        triggerHook: 0
+                                    })
+                                    .setTween(".home-div", 1, {
+                                        backgroundImage: "radial-gradient(white 15%, black 80%)"
+                                    })
+                                    .addTo(projectsController)
+                    </code></pre>
+                    <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                        let headController = new ScrollMagic.Controller()
+    
+                        let headScene = new ScrollMagic.Scene({
+                                            triggerElement: ".filler",
+                                            triggerHook: 0.9,
+                                        })
+                                        .setTween([".head-image", ".main-nav", ".head-message"], 1, {scale: 10, display: 'none'})
+                                        .addTo(headController)
+                        
+                        let projectsController = new ScrollMagic.Controller()
+                        
+                        let whiteScene = new ScrollMagic.Scene({
+                                            triggerElement: ".trigger",
+                                            triggerHook: 0
+                                        })
+                                        .setTween(".home-div", 1, {
+                                            backgroundImage: "radial-gradient(white 15%, black 80%)"
+                                        })
+                                        .addTo(projectsController)
+                        </code></pre>
+                    <p>
+                        For a slightly easier example, look at the code for the home page. When you scroll down, you actually touch <code>divs</code> 
+                        that serve as triggers for the animations. One scroll from the top puts the top of the screen in contact with a <code>div</code> 
+                        that then triggers the enlarging of all the home elements to simulate a zoom. As soon as you scroll to the bottom, another <code>div</code>
+                        is reached which then triggers the projects to appear. 
+                    </p>
+                    <p>
+                        ScrollMagic also comes with debug indicators to see where your triggers are. See the gif in the parallax scrolling below.
+                    </p>
+            </div>
+          </section>
+        <div class="parallaxParent">
+          <div style="background-image: url(images/project4/zoom.gif)"></div>
+        </div>
+        <section class="parallax-section">
+          <div class="parallax-content">
+            <p>
+                Next up is <strong>barba.js</strong>. This was probably the trickiest library to work with for this project. It's responsible for the 
+                transitions you see whenever you switch pages, avoiding the ugly page refreshes that would normally happen. As 
+                a result, barba.js is able to mimic the fluidity of a single page application despite my website having multiple pages. The way it works 
+                also mirrors a real SPA. In my HTML, I needed to mark out what elements would stay consistent between any page so switching pages would only 
+                render what's specific to that page.
+                
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
+                &lt;body data-barba="wrapper"&gt;
+                    &lt;!-- put here content that will not change
+                    between your pages, like &lt;header&gt; or &lt;nav&gt; --&gt;
+                  
+                    &lt;main data-barba="container" data-barba-namespace="home"&gt;
+                      &lt;!-- put here the content you wish to change
+                      between your pages, like your main content &lt;h1&gt; or &lt;p&gt; --&gt;
+                    &lt;/main&gt;
+                  
+                    &lt;!-- put here content that will not change
+                    between your pages, like &lt;footer&gt; --&gt;
+                &lt;/body&gt;
+                </code></pre>
+            </p>
+            <p>
+                The problem with all this however, is that JS scripts and CSS files were only set once and shared between pages. This meant I couldn't have 
+                different files for each page. <em>Everything</em> had to be in a single common script and stylesheet. I also 
+                needed a function in said script to reload all my other functions or the website would just break. On top of all this, 
+                I still needed extra logic for <strong>barba</strong> to run it all after a transition: 
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                barba.hooks.after(() => {
+                    const bottomDOM = document.getElementsByTagName("body")[0]
+                    const newScript = document.createElement("script")
+                    const oldScript = document.querySelector(".main-script")
+                    newScript.src = "./everything.js"
+                    newScript.className = "main-script"
+                    oldScript.remove()
+                    bottomDOM.appendChild(newScript)
+                })
+            </code></pre>
+            <p>
+                <code>barba.hooks.after</code> basically executed this code 'after' everything else had already been loaded, 
+            removing and reattaching the script to the DOM itself to re-run it. There's also a bit more to the <strong>barba</strong> 
+            specific JavaScript to make the transition actually play: 
+            </p>
+            <pre class="theme-atom-one-dark"><code class="hljs-code language-javascript">
+                function PageTransition() {
+                    let tl = gsap.timeline()
+                
+                    tl.to(".transition", {
+                        duration: 1,
+                        opacity: 1,
+                    })
+                }
+                
+                function delay(n) {
+                    n = n || 0;
+                    return new Promise((done) => {
+                        setTimeout(() => {
+                            done()
+                        }, n)
+                    })
+                }
+                
+                barba.init({
+                    sync: false,
+                    transitions: [
+                        {
+                            async leave(data) {
+                                window.scrollTo(0, 0);
+                                const done = this.async()
+                
+                                PageTransition()
+                                await delay(2000)
+                                done()
+                            },
+                            enter(data) {
+                                gsap.fromTo(".transition", {opacity: 1}, {opacity: 0, duration: 2})
+                            }
+                        }
+                    ]
+                })
+                </code></pre>
+                <p><code>barba.init</code> is what initializes the transitions. You can see there is one for leaving a page and another for entering. 
+                Behind the scenes, these transititions simply toggle the opacity of a <code>div</code> that covers the viewport, using 
+                <strong>GSAP</strong>, an animation library, to animate the change in state.
+                As a matter of fact, <strong>ScrollMagic</strong> also uses GSAP for its animations and the syntax is practically the same.
+                </p>
+                <p>
+                    Lastly for the new libraries is <strong>highlight.js</strong>. This is responsible for all the cool looking code boxes. 
+                    It works by styling the <code>pre</code> and <code>code</code> tags and then running a function to highlight the colors 
+                    based on the language used:
+                </p>
+                <pre class="theme-atom-one-dark"><code class="hljs-code language-html">
+                    &lt;pre class="theme-atom-one-dark"&gt;&lt;code class="hljs-code language-javascript"&gt;&lt;/code&gt;
+                    // insert JavaScript here
+                    &lt;/code&gt;&lt;/pre&gt;
+                </code></pre>
+                <span class="subtitle">highlight.js inception</span>
+                <p>Unsurprisingly, this was the least painful to get working and I'm glad it did because it influenced my design ideas 
+                    quite a bit. Without it, I would have had to display all my code with images which wouldn't have looked half as nice, 
+                    to the point where I might have decided not to bother with them at all.</p>
+                <h1>Closing Thoughts</h1>
+                <p>
+                    The feeling I had with <strong>highlight.js</strong> was definitely a recurring theme for all the libraries 
+                    I learned for this website; as I figured out what I could do with them, they shaped what I was going to build. For an 
+                    extreme example, I couldn't figure out a layout for my project pages until I was directed to the parallax scrolling function from 
+                    ScrollMagic. Then I decided to use the parallax sections as transition images between blocks and built the 
+                    rest of the project page from there.
+                </p>
+                <p>
+                    Speaking of design, I must have changed my ideas at least 3-4 times while working on this project. At first, I was going to 
+                    have a 'storytelling' theme, with each page being a literal page from a book. Similarly, I thought of a 'lab report' theme 
+                    where I would document my projects in third person from the view of a scientist. In the end, I settled on having a 'mindscape' 
+                    theme. Still, even that got warped as I continued to build this site. Eventually, I figured that whatever I came up with would be 
+                    the purest representation of my mind anyway so I stopped thinking too hard about the theme and just did things that I liked. 
+                    Perhaps now my website is a bit too informal but I can always change that later now that I, well, have a website to touch up.
+                </p>
+                <p>All in all, this project has been a real eye opener when it comes to design. I knew I wasn't going to become a professional web 
+                    designer over a single week but I do feel more inspired to try messing with CSS and just paying it more mind in general. In the future, 
+                    I am absolutely going to return to this site to make it better, or just use it as a CSS playground of sorts.
+                </p>
+            <p> And that's it for my SEB71 journey. Feel free to go back to my other projects: 
+                <a class="bottom-link" href="projectOne" style="color: red;"> Project 1: Tic-Tac-Toe</a>, 
+                <a class="bottom-link" href="projectTwo" style="color: green;">Project 2: GameShare&trade;</a>, or
+                <a class="bottom-link" href="projectThree" style="color: #d93900;">Project 3: Petrol Down Under</a>
+        </div>
+    </section>
+      </div> <!-- wrapper div -->
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="barba.js"></script>
+    <script class="main-script" src="everything.js"></script>
+
+  </body>
+</html>

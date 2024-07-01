@@ -24,7 +24,7 @@ let headScene = new ScrollMagic.Scene({
                     triggerHook: 0.9,
                 })
                 .setTween([".head-image", ".main-nav", ".head-message"], 1, {scale: 10, display: 'none'}) // trigger a TweenMax.to tween
-                // .addIndicators({name: "trigger div"})
+                // .addIndicators({name: "filler div"})
                 .addTo(headController)
 
 let projectsController = new ScrollMagic.Controller()
@@ -34,10 +34,9 @@ let whiteScene = new ScrollMagic.Scene({
                     triggerHook: 0
                 })
                 .setTween(".home-div", 1, {
-                    // backgroundColor: 'gray',
-                    // backgroundImage: 'url("https://i.natgeofe.com/n/e484088d-3334-4ab6-9b75-623f7b8505c9/1086.jpg")',
                     backgroundImage: "radial-gradient(white 15%, black 80%)"
                 })
+                // .addIndicators({name: "trigger div"})
                 .addTo(projectsController)
 
 let projectElements = document.getElementsByClassName("project-link");
@@ -99,19 +98,5 @@ for (let i = 0; i < parallaxSections.length; i++ ) {
         .setTween(parallaxSectionsDiv[i], {y: "80%", ease: Linear.easeNone})
         .addTo(parallaxController);
 }
-	// new ScrollMagic.Scene({triggerElement: "#parallax1"})
-	// 				.setTween("#parallax1 > div", {y: "80%", ease: Linear.easeNone})
-	// 				// .addIndicators()
-	// 				.addTo(parallaxController);
-
-	// new ScrollMagic.Scene({triggerElement: "#parallax2"})
-	// 				.setTween("#parallax2 > div", {y: "80%", ease: Linear.easeNone})
-	// 				// .addIndicators()
-	// 				.addTo(parallaxController);
-
-	// new ScrollMagic.Scene({triggerElement: "#parallax3"})
-	// 				.setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
-	// 				// .addIndicators()
-    //                 .addTo(parallaxController);
                     
 } // init EVERYTHING
